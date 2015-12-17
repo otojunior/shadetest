@@ -55,8 +55,7 @@
 				</executions>
 				<configuration>
                     <obfuscate>true</obfuscate>
-                    <injar>${project.build.finalName}.jar</injar>
-                    <outjar>${project.build.finalName}.jar</outjar>
+                    <attach>true</attach>
 					<proguardVersion>${dependency.version.proguard}</proguardVersion>
 					<proguardInclude>${basedir}/proguard.conf</proguardInclude>
 					<libs>

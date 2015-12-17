@@ -1,17 +1,17 @@
 /**
  * 
  */
-package org.otojunior.infra.tokeep;
+package org.otojunior.shadetest.infra.tokeep;
 
 /**
  * @author 01456231650
  *
  */
-public class ClassInfraToKeepTwo {
+public class ClassInfraToKeepOne {
 	/**
 	 * 
 	 */
-	public void methodTwoToKeep() {
+	public void methodToKeep() {
 		/*
 		 * Método vazio somente para exemplificar o recurso de keep
 		 * do Proguard.

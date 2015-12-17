@@ -3,7 +3,7 @@
  */
 package org.otojunior.shadetest.dominio.service;
 
-import org.otojunior.infra.service.FileReaderService;
+import org.otojunior.shadetest.infra.service.FileReaderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.otojunior.infra.service;
+package org.otojunior.shadetest.infra.service;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
