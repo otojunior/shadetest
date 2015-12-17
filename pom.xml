@@ -20,11 +20,6 @@
 	<modules>
 		<module>shadetest-infra</module>
 		<module>shadetest-dominio</module>
-		<module>shadetest-infrapersistencia</module>
-		<module>shadetest-validador</module>
-		<module>shadetest-relatorios</module>
-		<module>shadetest-nucleo</module>
-		<module>shadetest-edicao</module>
 		<module>shadetest-fronteira</module>
 	</modules>
 
