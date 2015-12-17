@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import org.otojunior.shadetest.dominio.service.FileTextReaderService;
+import org.otojunior.shadetest.dominio.service.TextFileReaderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +37,7 @@ public class JanelaPrincipal extends JFrame {
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(e -> {
-			FileTextReaderService service = new FileTextReaderService();
+			TextFileReaderService service = new TextFileReaderService();
 			String result = service.read();
 			JOptionPane.showMessageDialog(
 				JanelaPrincipal.this, 
