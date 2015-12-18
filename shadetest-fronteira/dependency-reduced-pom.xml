@@ -16,7 +16,7 @@
         <configuration>
           <archive>
             <manifest>
-              <addClasspath>false</addClasspath>
+              <addClasspath>true</addClasspath>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
               <mainClass>org.otojunior.shadetest.fronteira.App</mainClass>
@@ -27,6 +27,51 @@
               <Implementation-Date>${timestamp}</Implementation-Date>
             </manifestEntries>
           </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>${plugin.version.maven-shade-plugin}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <minimizeJar>false</minimizeJar>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.github.wvengen</groupId>
+        <artifactId>proguard-maven-plugin</artifactId>
+        <version>${plugin.version.proguard-maven-plugin}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>proguard</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>net.sf.proguard</groupId>
+            <artifactId>proguard-base</artifactId>
+            <version>${dependency.version.proguard}</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <obfuscate>true</obfuscate>
+          <attach>true</attach>
+          <proguardVersion>${dependency.version.proguard}</proguardVersion>
+          <proguardInclude>${basedir}/proguard.conf</proguardInclude>
+          <libs>
+            <lib>${java.home}/lib/rt.jar</lib>
+            <lib>${java.home}/lib/jsse.jar</lib>
+          </libs>
         </configuration>
       </plugin>
     </plugins>

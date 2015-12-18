@@ -49,39 +49,6 @@
 					</archive>
 				</configuration>
 			</plugin>
-			
-			<plugin>
-				<groupId>com.github.wvengen</groupId>
-				<artifactId>proguard-maven-plugin</artifactId>
-				<version>${plugin.version.proguard-maven-plugin}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>proguard</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-                    <obfuscate>true</obfuscate>
-                    <attach>true</attach>
-					<proguardVersion>${dependency.version.proguard}</proguardVersion>
-					<proguardInclude>${basedir}/proguard.conf</proguardInclude>
-					<libs>
-                        <lib>${java.home}/lib/rt.jar</lib>
-                        <lib>${java.home}/lib/jsse.jar</lib>
-                    </libs>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>net.sf.proguard</groupId>
-						<artifactId>proguard-base</artifactId>
-						<version>${dependency.version.proguard}</version>
-						<scope>runtime</scope>
-					</dependency>
-				</dependencies>
-			</plugin>
 		</plugins>
 	</build>
-
 </project>

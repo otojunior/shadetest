@@ -53,6 +53,23 @@
 			</plugin>
 			
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-shade-plugin</artifactId>
+			    <version>${plugin.version.maven-shade-plugin}</version>
+			    <configuration>
+					<minimizeJar>false</minimizeJar>
+				</configuration>
+			    <executions>
+			    	<execution>
+			    		<goals>
+			    			<goal>shade</goal>
+			    		</goals>
+			    		<phase>package</phase>
+			    	</execution>
+			    </executions>
+			</plugin>
+			
+			<plugin>
 				<groupId>com.github.wvengen</groupId>
 				<artifactId>proguard-maven-plugin</artifactId>
 				<version>${plugin.version.proguard-maven-plugin}</version>
@@ -79,7 +96,6 @@
 						<groupId>net.sf.proguard</groupId>
 						<artifactId>proguard-base</artifactId>
 						<version>${dependency.version.proguard}</version>
-						<scope>runtime</scope>
 					</dependency>
 				</dependencies>
 			</plugin>

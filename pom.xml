@@ -258,24 +258,9 @@
 				</configuration>
 			</plugin>
 			
-			<!-- 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-shade-plugin</artifactId>
-			    <version>${plugin.version.maven-shade-plugin}</version>
-			    <configuration>
-					<minimizeJar>false</minimizeJar>
-				</configuration>
-			    <executions>
-			    	<execution>
-			    		<goals>
-			    			<goal>shade</goal>
-			    		</goals>
-			    		<phase>package</phase>
-			    	</execution>
-			    </executions>
-			</plugin>
-			-->
+			
+			
+			
 		</plugins>
 	</build>
 </project>
