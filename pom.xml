@@ -257,10 +257,6 @@
 					<timestampFormat>{0,date,dd/MM/yyyy HH:mm:ss}</timestampFormat>
 				</configuration>
 			</plugin>
-			
-			
-			
-			
 		</plugins>
 	</build>
 </project>
