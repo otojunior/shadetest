@@ -38,6 +38,8 @@
 			    	<filesets>
 			    		<fileset>
 			    			<directory>${basedir}/build12/build12_Build_Output</directory>
+			    		</fileset>
+			    		<fileset>
 			    			<directory>${basedir}/build12/build12locales_Default_Configuration</directory>
 			    		</fileset>
 			    		<fileset>
