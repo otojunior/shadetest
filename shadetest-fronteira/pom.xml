@@ -32,6 +32,27 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-clean-plugin</artifactId>
+			    <version>2.5</version>
+			    <configuration>
+			    	<filesets>
+			    		<fileset>
+			    			<directory>${basedir}/build12/build12_Build_Output</directory>
+			    			<directory>${basedir}/build12/build12locales_Default_Configuration</directory>
+			    		</fileset>
+			    		<fileset>
+		    				<directory>${basedir}/build12/</directory>
+			    			<includes>
+			    				<include>ia.credstore</include>
+			    				<include>buildlog.xml</include>
+			    			</includes>
+			    		</fileset>
+			    	</filesets>
+			    </configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>${plugin.version.maven-jar-plugin}</version>
 				<configuration>
