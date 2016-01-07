@@ -17,6 +17,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<plugin.version.maven-jar-plugin>2.4</plugin.version.maven-jar-plugin>
+		<IA_HOME>C:\\Program Files (x86)\\InstallAnywhere 2012</IA_HOME>
 	</properties>
 	
 	<dependencies>
@@ -121,7 +122,30 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-antrun-plugin</artifactId>
+		        <version>1.8</version>
+		        <configuration>
+		        	<target>
+		        		<taskdef name="buildinstaller" classname="com.zerog.ia.integration.ant.InstallAnywhereAntTask">
+							<classpath>
+								<pathelement path="${IA_HOME}/resource/build/iaant.jar"/>
+							</classpath>
+				    	</taskdef>
+				    	<buildinstaller IALocation="${IA_HOME}" IAProjectFile="${basedir}/build12/build12.iap_xml"/>
+		        	</target>
+		        </configuration>
+		        <executions>
+		        	<execution>
+		        		<phase>install</phase>
+		        		<goals>
+		        			<goal>run</goal>
+		        		</goals>
+		        	</execution>
+		        </executions>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
