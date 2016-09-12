@@ -47,7 +47,7 @@
 		<plugin.version.maven-surefire-plugin>2.16</plugin.version.maven-surefire-plugin>
 		<plugin.version.sonar-maven3-plugin>4.4</plugin.version.sonar-maven3-plugin>
 		<plugin.version.buildnumber-maven-plugin>1.3</plugin.version.buildnumber-maven-plugin>
-		<plugin.version.maven-shade-plugin>2.4.1</plugin.version.maven-shade-plugin>
+		<plugin.version.maven-shade-plugin>2.4.3</plugin.version.maven-shade-plugin>
 		<plugin.version.proguard-maven-plugin>2.0.11</plugin.version.proguard-maven-plugin>
 	</properties>
 

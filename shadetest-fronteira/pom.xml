@@ -47,6 +47,7 @@
 			    			<includes>
 			    				<include>ia.credstore</include>
 			    				<include>buildlog.xml</include>
+			    				<include>build12Build.iap_xml</include>
 			    			</includes>
 			    		</fileset>
 			    	</filesets>
@@ -76,19 +77,56 @@
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/recursos</directory>
+									<targetPath>recursos</targetPath>
+								</resource>
+								<resource>
+									<directory>${project.basedir}/configuracoes</directory>
+									<targetPath>configuracoes</targetPath>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-shade-plugin</artifactId>
 			    <version>${plugin.version.maven-shade-plugin}</version>
-			    <configuration>
-					<minimizeJar>false</minimizeJar>
-				</configuration>
 			    <executions>
 			    	<execution>
+			    		<phase>package</phase>
 			    		<goals>
 			    			<goal>shade</goal>
 			    		</goals>
-			    		<phase>package</phase>
 			    	</execution>
 			    </executions>
+			    <configuration>
+					<minimizeJar>false</minimizeJar>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
 			</plugin>
 			
 			<plugin>
@@ -126,6 +164,14 @@
 				<groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-antrun-plugin</artifactId>
 		        <version>1.8</version>
+		        <executions>
+		        	<execution>
+		        		<phase>install</phase>
+		        		<goals>
+		        			<goal>run</goal>
+		        		</goals>
+		        	</execution>
+		        </executions>
 		        <configuration>
 		        	<target>
 		        		<taskdef name="buildinstaller" classname="com.zerog.ia.integration.ant.InstallAnywhereAntTask">
@@ -136,14 +182,6 @@
 				    	<buildinstaller IALocation="${IA_HOME}" IAProjectFile="${basedir}/build12/build12.iap_xml"/>
 		        	</target>
 		        </configuration>
-		        <executions>
-		        	<execution>
-		        		<phase>install</phase>
-		        		<goals>
-		        			<goal>run</goal>
-		        		</goals>
-		        	</execution>
-		        </executions>
 			</plugin>
 		</plugins>
 	</build>
