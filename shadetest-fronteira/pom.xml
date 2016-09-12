@@ -55,6 +55,20 @@
 			</plugin>
 			
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.10</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>parse-version</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>${plugin.version.maven-jar-plugin}</version>
@@ -179,7 +193,15 @@
 								<pathelement path="${IA_HOME}/resource/build/iaant.jar"/>
 							</classpath>
 				    	</taskdef>
-				    	<buildinstaller IALocation="${IA_HOME}" IAProjectFile="${basedir}/build12/build12.iap_xml"/>
+				    	<buildinstaller IALocation="${IA_HOME}" 
+				    		IAProjectFile="${basedir}/build12/build12.iap_xml" 
+				    		ProjectVersionMajor="${parsedVersion.majorVersion}"
+				    		ProjectVersionMinor="${parsedVersion.minorVersion}"
+				    		ProjectVersionRevision="${parsedVersion.incrementalVersion}"
+				    		ProjectVersionSubrevision="${parsedVersion.qualifier}"
+				    		failOnError="true">
+					    		<env key="IA_BTV_PROJECT_VERSION_DISPLAY_NAME" value="${project.version}" />
+					    </buildinstaller>
 		        	</target>
 		        </configuration>
 			</plugin>

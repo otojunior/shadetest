@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This script was automatically generated using InstallAnywhere 2012 Enterprise with Cloud Pack, Build 4349
+<!-- This script was automatically generated using InstallAnywhere 2012 Enterprise with Cloud Pack, Build 4390
      STATUS: Fully-Functional UNLICENSED Trial Edition
-     DATE:   Thu Jan 07 09:57:25 BRST 2016 -->
-<InstallAnywhere_Deployment_Project increments="3361">
+     DATE:   Mon Sep 12 17:02:14 BRT 2016 -->
+<InstallAnywhere_Deployment_Project increments="3419">
 	<!-- ** DO NOT EDIT ** Essential authorization and configuration data ** DO NOT EDIT ** -->
 	<essentialScriptInfo>
 		<versionID major="14" minor="0" revision="0"/>
-		<editionID>49,52,46,48,32,69,110,116,101,114,112,114,105,115,101,32,119,105,116,104,32,67,108,111,117,100,32,80,97,99,107,32,66,117,105,108,100,32,52,51,52,57</editionID>
+		<editionID>49,52,46,48,32,69,110,116,101,114,112,114,105,115,101,32,119,105,116,104,32,67,108,111,117,100,32,80,97,99,107,32,66,117,105,108,100,32,52,51,57,48</editionID>
 		<scriptID>12,42,11,85,78,76,73,67,69,78,83,69,68</scriptID>
 		<buildID>3,13,71,87,105,110,100,111,119,115,32,55,44,32,54,46,49,44,32,120,56,54,59,32,74,97,118,97,32,49,46,55,46,48,44,32,79,114,97,99,108,101,32,67,111,114,112,111,114,97,116,105,111,110,44,32,104,116,116,112,58,47,47,106,97,118,97,46,111,114,97,99,108,101,46,99,111,109,47,59,32,112,116,44,32,85,110,107,110,111,119,110,59,32,67,112,49,50,53,50</buildID>
 		<!-- The authorizationID may change between project saves and builds.  This does not effect the integrity of the project, nor do changes in this value represent changes in the actual InstallAnywhere project. -->
-		<authorizationID>1,0,0,80,17,-8,-48,112,64,99,70,101,125,121,100,96,105,48,48,49,56,52,67,98,113,112,124,44,81,100,99,62,57,15,14,9,5,34,59,2,1,0,0</authorizationID>
+		<authorizationID>1,0,0,80,17,-5,48,-16,64,99,70,101,125,121,100,96,105,48,48,49,56,52,67,98,113,112,124,44,81,100,99,62,57,15,14,2,0,46,63,7,1,0,0</authorizationID>
 	</essentialScriptInfo>
-	<installationObjects uniqueObjects="161">
+	<installationObjects uniqueObjects="162">
 		<object class="com.zerog.ia.installer.Installer" objectID="2f6f1968a029">
 			<property name="belongsToUninstallPhase">
 				<boolean>false</boolean>
@@ -125,6 +125,19 @@ Relative paths are relative to the launcher.]]></string>
 								</object>
 							</method>
 							<method name="addElement">
+								<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="2f6f2c64a076">
+									<property name="propertyValue">
+										<string><![CDATA[$USER_INSTALL_DIR$]]></string>
+									</property>
+									<property name="propertyName">
+										<string><![CDATA[lax.root.install.dir]]></string>
+									</property>
+									<property name="propertyComment">
+										<string><![CDATA[path to the installdir magic folder]]></string>
+									</property>
+								</object>
+							</method>
+							<method name="addElement">
 								<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="2f6f2c63a079">
 									<property name="propertyValue">
 										<string><![CDATA[0]]></string>
@@ -138,19 +151,6 @@ Relative paths are relative to the launcher.]]></string>
 1, to Prefer 32bit JVM, if not available use 64 bit JVM
 2, to Prefer 64bit JVM, if not available exit with error
 3, to Prefer 32bit JVM, if not available exit with error]]></string>
-									</property>
-								</object>
-							</method>
-							<method name="addElement">
-								<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="2f6f2c64a076">
-									<property name="propertyValue">
-										<string><![CDATA[$USER_INSTALL_DIR$]]></string>
-									</property>
-									<property name="propertyName">
-										<string><![CDATA[lax.root.install.dir]]></string>
-									</property>
-									<property name="propertyComment">
-										<string><![CDATA[path to the installdir magic folder]]></string>
 									</property>
 								</object>
 							</method>
@@ -975,10 +975,13 @@ Press "Done" to quit the installer.]]></string>
 												<string><![CDATA[Windows]]></string>
 											</property>
 											<property name="buildNoVM">
-												<boolean>true</boolean>
+												<boolean>false</boolean>
 											</property>
 											<property name="buildWithVM">
-												<boolean>false</boolean>
+												<boolean>true</boolean>
+											</property>
+											<property name="bundledVM">
+												<string><![CDATA[OracleJRE8u51_windows(x86).vm]]></string>
 											</property>
 											<property name="withoutVmSearchOption">
 												<short>10</short>
@@ -2087,6 +2090,9 @@ Press "Done" to quit the installer.]]></string>
 											</method>
 										</object>
 									</property>
+									<property name="useSameBuildCredentialsForDeployment">
+										<boolean>true</boolean>
+									</property>
 								</object>
 							</property>
 							<property name="supportedHypervisorType">
@@ -2106,7 +2112,7 @@ Press "Done" to quit the installer.]]></string>
 								<boolean>true</boolean>
 							</property>
 							<property name="credentialInformation">
-								<object class="com.flexera.ia.vapp.datastructures.VMWareCredentialInformationImpl" objectID="2f741508a1b8">
+								<object class="com.flexera.ia.vapp.datastructures.VMWareCredentialInformationImpl" objectID="337f7096a955">
 									<property name="hostName">
 										<string><![CDATA[]]></string>
 									</property>
@@ -2176,7 +2182,7 @@ Press "Done" to quit the installer.]]></string>
 				<object class="java.util.Properties">
 					<method name="put">
 						<string><![CDATA[com.zerog.ia.project.save.last.date]]></string>
-						<string><![CDATA[7 de Janeiro de 2016 09h57min25s BRST]]></string>
+						<string><![CDATA[12 de Setembro de 2016 17h02min14s BRT]]></string>
 					</method>
 					<method name="put">
 						<string><![CDATA[com.zerog.ia.build.options.optimization.platform.merge]]></string>
@@ -2499,7 +2505,7 @@ Press "Done" to quit the installer.]]></string>
 						<string><![CDATA[]]></string>
 					</property>
 					<property name="productDescription">
-						<string><![CDATA[]]></string>
+						<string><![CDATA[Produto ShadeTest para testes do InstallAnywhere com Maven]]></string>
 					</property>
 					<property name="productVersion">
 						<object class="com.zerog.ia.installer.util.Version" objectID="2f6f19e8a02f">
@@ -2519,6 +2525,9 @@ Press "Done" to quit the installer.]]></string>
 					</property>
 					<property name="supportURL">
 						<string><![CDATA[]]></string>
+					</property>
+					<property name="vendorName">
+						<string><![CDATA[Oto Junior Test Company]]></string>
 					</property>
 					<property name="vendorID">
 						<object class="com.zerog.registry.UUID">
@@ -3691,6 +3700,12 @@ InstallAnywhere will remove the features that were installed during product inst
 			<property name="swidTagIncluded">
 				<boolean>false</boolean>
 			</property>
+			<property name="codeSignOnMacEnabled">
+				<boolean>false</boolean>
+			</property>
+			<property name="oldStyleInstallersEnabled">
+				<boolean>false</boolean>
+			</property>
 			<visualChildren>
 				<object class="com.zerog.ia.installer.InstallSet" objectID="2f6f1db0a055">
 					<property name="belongsToUninstallPhase">
@@ -3917,6 +3932,7 @@ InstallAnywhere will remove the features that were installed during product inst
 										<boolean>false</boolean>
 									</property>
 									<installChildren>
+										<object refID="2f6f2c61a075"/>
 										<object class="com.zerog.ia.installer.actions.Comment" objectID="2f6f1de6a05f">
 											<property name="belongsToUninstallPhase">
 												<boolean>false</boolean>
@@ -4069,6 +4085,19 @@ Relative paths are relative to the launcher.]]></string>
 																</object>
 															</method>
 															<method name="addElement">
+																<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="2f6f1e95a060">
+																	<property name="propertyValue">
+																		<string><![CDATA[$USER_INSTALL_DIR$]]></string>
+																	</property>
+																	<property name="propertyName">
+																		<string><![CDATA[lax.root.install.dir]]></string>
+																	</property>
+																	<property name="propertyComment">
+																		<string><![CDATA[path to the installdir magic folder]]></string>
+																	</property>
+																</object>
+															</method>
+															<method name="addElement">
 																<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="2f6f1e98a062">
 																	<property name="propertyValue">
 																		<string><![CDATA[0]]></string>
@@ -4082,19 +4111,6 @@ Relative paths are relative to the launcher.]]></string>
 1, to Prefer 32bit JVM, if not available use 64 bit JVM
 2, to Prefer 64bit JVM, if not available exit with error
 3, to Prefer 32bit JVM, if not available exit with error]]></string>
-																	</property>
-																</object>
-															</method>
-															<method name="addElement">
-																<object class="com.zerog.ia.installer.util.LAXPropertyData" objectID="2f6f1e95a060">
-																	<property name="propertyValue">
-																		<string><![CDATA[$USER_INSTALL_DIR$]]></string>
-																	</property>
-																	<property name="propertyName">
-																		<string><![CDATA[lax.root.install.dir]]></string>
-																	</property>
-																	<property name="propertyComment">
-																		<string><![CDATA[path to the installdir magic folder]]></string>
 																	</property>
 																</object>
 															</method>
@@ -4199,9 +4215,8 @@ and any path to a file to save to the file]]></string>
 												</object>
 											</visualChildren>
 										</object>
-										<object refID="2f6f2c61a075"/>
 										<object refID="2f70ace6a07b"/>
-										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="2f70ace7a07b">
+										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="337e7222a898">
 											<property name="belongsToUninstallPhase">
 												<boolean>false</boolean>
 											</property>
@@ -4224,7 +4239,48 @@ and any path to a file to save to the file]]></string>
 												<boolean>false</boolean>
 											</property>
 											<property name="sourcePath">
-												<string><![CDATA[D:\java\projetos\shadetest\shadetest-fronteira\recursos]]></string>
+												<string><![CDATA[D:\java\projetos\shadetest\shadetest-fronteira\target\configuracoes]]></string>
+											</property>
+											<property name="shouldUninstall">
+												<boolean>true</boolean>
+											</property>
+											<property name="destinationName">
+												<string><![CDATA[configuracoes]]></string>
+											</property>
+											<property name="removeRecursively">
+												<boolean>false</boolean>
+											</property>
+											<property name="totalSize">
+												<long>1</long>
+											</property>
+											<property name="macBinary">
+												<boolean>false</boolean>
+											</property>
+										</object>
+										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="337e7224a899">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="unixPermissions">
+												<string><![CDATA[775]]></string>
+											</property>
+											<property name="sourceName">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="overrideUnixPermissions">
+												<boolean>false</boolean>
+											</property>
+											<property name="sourcePath">
+												<string><![CDATA[D:\java\projetos\shadetest\shadetest-fronteira\target\recursos]]></string>
 											</property>
 											<property name="shouldUninstall">
 												<boolean>true</boolean>
@@ -4233,7 +4289,7 @@ and any path to a file to save to the file]]></string>
 												<string><![CDATA[recursos]]></string>
 											</property>
 											<property name="removeRecursively">
-												<boolean>false</boolean>
+												<boolean>true</boolean>
 											</property>
 											<property name="totalSize">
 												<long>1</long>
@@ -4743,7 +4799,8 @@ and any path to a file to save to the file]]></string>
 								<object refID="2f6f1de4a05f"/>
 								<object refID="2f6f2c61a075"/>
 								<object refID="2f70ace6a07b"/>
-								<object refID="2f70ace7a07b"/>
+								<object refID="337e7222a898"/>
+								<object refID="337e7224a899"/>
 							</visualChildren>
 						</object>
 						<object class="com.zerog.ia.installer.GhostDirectory" objectID="2f6f1e99a064">
@@ -4790,7 +4847,8 @@ and any path to a file to save to the file]]></string>
 			</installChildren>
 		</object>
 	</installationObjects>
-	<restorationObjects count="1">
-		<object refID="2f70ace7a07b"/>
+	<restorationObjects count="2">
+		<object refID="337e7222a898"/>
+		<object refID="337e7224a899"/>
 	</restorationObjects>
 </InstallAnywhere_Deployment_Project>
