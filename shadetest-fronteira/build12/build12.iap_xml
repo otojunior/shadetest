@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This script was automatically generated using InstallAnywhere 2012 Enterprise with Cloud Pack, Build 4390
      STATUS: Fully-Functional UNLICENSED Trial Edition
-     DATE:   Mon Sep 12 17:02:14 BRT 2016 -->
+     DATE:   Tue Sep 13 09:42:47 BRT 2016 -->
 <InstallAnywhere_Deployment_Project increments="3419">
 	<!-- ** DO NOT EDIT ** Essential authorization and configuration data ** DO NOT EDIT ** -->
 	<essentialScriptInfo>
@@ -10,7 +10,7 @@
 		<scriptID>12,42,11,85,78,76,73,67,69,78,83,69,68</scriptID>
 		<buildID>3,13,71,87,105,110,100,111,119,115,32,55,44,32,54,46,49,44,32,120,56,54,59,32,74,97,118,97,32,49,46,55,46,48,44,32,79,114,97,99,108,101,32,67,111,114,112,111,114,97,116,105,111,110,44,32,104,116,116,112,58,47,47,106,97,118,97,46,111,114,97,99,108,101,46,99,111,109,47,59,32,112,116,44,32,85,110,107,110,111,119,110,59,32,67,112,49,50,53,50</buildID>
 		<!-- The authorizationID may change between project saves and builds.  This does not effect the integrity of the project, nor do changes in this value represent changes in the actual InstallAnywhere project. -->
-		<authorizationID>1,0,0,80,17,-5,48,-16,64,99,70,101,125,121,100,96,105,48,48,49,56,52,67,98,113,112,124,44,81,100,99,62,57,15,14,2,0,46,63,7,1,0,0</authorizationID>
+		<authorizationID>1,0,0,80,33,-101,48,80,64,99,70,101,125,121,100,96,105,48,48,49,56,52,67,98,113,112,124,44,81,100,99,62,57,15,14,11,6,34,51,7,1,0,0</authorizationID>
 	</essentialScriptInfo>
 	<installationObjects uniqueObjects="162">
 		<object class="com.zerog.ia.installer.Installer" objectID="2f6f1968a029">
@@ -2112,7 +2112,7 @@ Press "Done" to quit the installer.]]></string>
 								<boolean>true</boolean>
 							</property>
 							<property name="credentialInformation">
-								<object class="com.flexera.ia.vapp.datastructures.VMWareCredentialInformationImpl" objectID="337f7096a955">
+								<object class="com.flexera.ia.vapp.datastructures.VMWareCredentialInformationImpl" objectID="37137605a899">
 									<property name="hostName">
 										<string><![CDATA[]]></string>
 									</property>
@@ -2182,7 +2182,7 @@ Press "Done" to quit the installer.]]></string>
 				<object class="java.util.Properties">
 					<method name="put">
 						<string><![CDATA[com.zerog.ia.project.save.last.date]]></string>
-						<string><![CDATA[12 de Setembro de 2016 17h02min14s BRT]]></string>
+						<string><![CDATA[13 de Setembro de 2016 09h42min47s BRT]]></string>
 					</method>
 					<method name="put">
 						<string><![CDATA[com.zerog.ia.build.options.optimization.platform.merge]]></string>
@@ -2486,7 +2486,7 @@ Press "Done" to quit the installer.]]></string>
 			<property name="installerInfoData">
 				<object class="com.zerog.ia.installer.util.InstallerInfoData" objectID="2f6f19e9a02e">
 					<property name="installerTitle">
-						<string><![CDATA[Produto ShadeTest]]></string>
+						<string><![CDATA[Instalação do Produto ShadeTest @PROJECT_VERSION_DISPLAY_NAME@]]></string>
 					</property>
 					<property name="installerName">
 						<string><![CDATA[InstaladorShadeTest]]></string>
@@ -3628,7 +3628,7 @@ InstallAnywhere will remove the features that were installed during product inst
 				<string><![CDATA[]]></string>
 			</property>
 			<property name="multipleLaunch">
-				<boolean>false</boolean>
+				<boolean>true</boolean>
 			</property>
 			<property name="cancelButtonEnabledDuringInstall">
 				<boolean>true</boolean>
@@ -4216,47 +4216,6 @@ and any path to a file to save to the file]]></string>
 											</visualChildren>
 										</object>
 										<object refID="2f70ace6a07b"/>
-										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="337e7222a898">
-											<property name="belongsToUninstallPhase">
-												<boolean>false</boolean>
-											</property>
-											<property name="rollbackEnabledCancel">
-												<boolean>true</boolean>
-											</property>
-											<property name="rollbackEnabledError">
-												<boolean>true</boolean>
-											</property>
-											<property name="ruleExpression">
-												<string><![CDATA[]]></string>
-											</property>
-											<property name="unixPermissions">
-												<string><![CDATA[775]]></string>
-											</property>
-											<property name="sourceName">
-												<string><![CDATA[]]></string>
-											</property>
-											<property name="overrideUnixPermissions">
-												<boolean>false</boolean>
-											</property>
-											<property name="sourcePath">
-												<string><![CDATA[D:\java\projetos\shadetest\shadetest-fronteira\target\configuracoes]]></string>
-											</property>
-											<property name="shouldUninstall">
-												<boolean>true</boolean>
-											</property>
-											<property name="destinationName">
-												<string><![CDATA[configuracoes]]></string>
-											</property>
-											<property name="removeRecursively">
-												<boolean>false</boolean>
-											</property>
-											<property name="totalSize">
-												<long>1</long>
-											</property>
-											<property name="macBinary">
-												<boolean>false</boolean>
-											</property>
-										</object>
 										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="337e7224a899">
 											<property name="belongsToUninstallPhase">
 												<boolean>false</boolean>
@@ -4290,6 +4249,47 @@ and any path to a file to save to the file]]></string>
 											</property>
 											<property name="removeRecursively">
 												<boolean>true</boolean>
+											</property>
+											<property name="totalSize">
+												<long>1</long>
+											</property>
+											<property name="macBinary">
+												<boolean>false</boolean>
+											</property>
+										</object>
+										<object class="com.zerog.ia.installer.actions.InstallDirectory" objectID="337e7222a898">
+											<property name="belongsToUninstallPhase">
+												<boolean>false</boolean>
+											</property>
+											<property name="rollbackEnabledCancel">
+												<boolean>true</boolean>
+											</property>
+											<property name="rollbackEnabledError">
+												<boolean>true</boolean>
+											</property>
+											<property name="ruleExpression">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="unixPermissions">
+												<string><![CDATA[775]]></string>
+											</property>
+											<property name="sourceName">
+												<string><![CDATA[]]></string>
+											</property>
+											<property name="overrideUnixPermissions">
+												<boolean>false</boolean>
+											</property>
+											<property name="sourcePath">
+												<string><![CDATA[D:\java\projetos\shadetest\shadetest-fronteira\target\configuracoes]]></string>
+											</property>
+											<property name="shouldUninstall">
+												<boolean>true</boolean>
+											</property>
+											<property name="destinationName">
+												<string><![CDATA[configuracoes]]></string>
+											</property>
+											<property name="removeRecursively">
+												<boolean>false</boolean>
 											</property>
 											<property name="totalSize">
 												<long>1</long>
@@ -4848,7 +4848,7 @@ and any path to a file to save to the file]]></string>
 		</object>
 	</installationObjects>
 	<restorationObjects count="2">
-		<object refID="337e7222a898"/>
 		<object refID="337e7224a899"/>
+		<object refID="337e7222a898"/>
 	</restorationObjects>
 </InstallAnywhere_Deployment_Project>
