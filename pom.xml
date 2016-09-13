@@ -41,7 +41,7 @@
 		<dependency.version.proguard>5.2.1</dependency.version.proguard>
 		<plugin.version.java>1.8</plugin.version.java>
 		<plugin.version.maven-compiler-plugin>3.1</plugin.version.maven-compiler-plugin>
-		<plugin.version.maven-release-plugin>2.5</plugin.version.maven-release-plugin>
+		<plugin.version.maven-release-plugin>2.5.3</plugin.version.maven-release-plugin>
 		<plugin.version.maven-source-plugin>2.2.1</plugin.version.maven-source-plugin>
 		<plugin.version.maven-javadoc-plugin>2.9.1</plugin.version.maven-javadoc-plugin>
 		<plugin.version.maven-surefire-plugin>2.16</plugin.version.maven-surefire-plugin>
