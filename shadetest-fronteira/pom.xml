@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.otojunior</groupId>
 		<artifactId>shadetest-pom</artifactId>
-		<version>1.0.5-SNAPSHOT</version>
+		<version>1.0.5</version>
 	</parent>
 
 	<artifactId>shadetest-fronteira</artifactId>
@@ -210,16 +210,10 @@
 		        	<target>
 		        		<taskdef name="buildinstaller" classname="com.zerog.ia.integration.ant.InstallAnywhereAntTask">
 							<classpath>
-								<pathelement path="${IA_HOME}/resource/build/iaant.jar"/>
+								<pathelement path="${IA_HOME}/resource/build/iaant.jar" />
 							</classpath>
 				    	</taskdef>
-				    	<buildinstaller IALocation="${IA_HOME}" 
-				    		IAProjectFile="${basedir}/build12/build12.iap_xml" 
-				    		ProjectVersionMajor="${parsedVersion.majorVersion}"
-				    		ProjectVersionMinor="${parsedVersion.minorVersion}"
-				    		ProjectVersionRevision="${parsedVersion.incrementalVersion}"
-				    		ProjectVersionSubrevision="${parsedVersion.qualifier}"
-				    		failOnError="true">
+				    	<buildinstaller IALocation="${IA_HOME}" IAProjectFile="${basedir}/build12/build12.iap_xml" ProjectVersionMajor="${parsedVersion.majorVersion}" ProjectVersionMinor="${parsedVersion.minorVersion}" ProjectVersionRevision="${parsedVersion.incrementalVersion}" ProjectVersionSubrevision="${parsedVersion.qualifier}" failOnError="true">
 					    		<env key="IA_BTV_PROJECT_VERSION_DISPLAY_NAME" value="${project.version}" />
 					    </buildinstaller>
 		        	</target>
