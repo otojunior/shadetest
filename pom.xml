@@ -60,7 +60,7 @@
 			scm:git:file://localhost/c:/temp/projeto.git
 	 -->
 	<scm>
-		<developerConnection>scm:git:[Git Repo URL]</developerConnection>
+		<developerConnection>scm:git:git@github.com:otojunior/shadetest.git</developerConnection>
 	</scm>
 	
 	<distributionManagement>
