@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>org.otojunior</groupId>
 	<artifactId>shadetest-pom</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<name>Projeto Shadetest - Modulo POM</name>
 	<url>http://www.org.otojunior/shadetest</url>
-	
+
 	<organization>
 		<name>Organization org.otojunior</name>
 		<url>http://www.org.otojunior</url>
@@ -52,18 +52,17 @@
 	</properties>
 
 	<!-- 
-		SCM Implementation: Git
-			scm:git:<protocol>://server_name[:port]/path_to_repository
-			scm:git:file://[hostname]/path_to_repository
-		Examples:
-			scm:git:ssh://github.com/projeto.git
-			scm:git:file://localhost/c:/temp/projeto.git
-	 -->
+		SCM Implementation: 
+		Git scm:git:<protocol>://server_name[:port]/path_to_repository 
+		
+		scm:git:file://[hostname]/path_to_repository Examples: scm:git:ssh://github.com/projeto.git 
+		scm:git:file://localhost/c:/temp/projeto.git 
+	-->
 	<scm>
 		<developerConnection>scm:git:git@github.com:otojunior/shadetest.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
-	
+		<tag>HEAD</tag>
+	</scm>
+
 	<distributionManagement>
 		<snapshotRepository>
 			<id>mvnrepo-snapshot-${project.artifactId}</id>
@@ -74,7 +73,7 @@
 			<url>file://${project.build.directory}/mvn-repo/release</url>
 		</repository>
 	</distributionManagement>
-	
+
 	<repositories>
 		<repository>
 			<id>repository.jboss.org</id>
@@ -82,7 +81,7 @@
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
-	
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>repository.jboss.org</id>
@@ -105,41 +104,41 @@
 			<version>${dependency.version.logback}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.easymock</groupId>
-		    <artifactId>easymock</artifactId>
-		    <version>${dependency.version.easymock}</version>
-		    <scope>test</scope>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>${dependency.version.easymock}</version>
+			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
 			<version>${dependency.version.powermock}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-easymock</artifactId>
 			<version>${dependency.version.powermock}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <version>${dependency.version.h2}</version>
-		    <scope>test</scope>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${dependency.version.h2}</version>
+			<scope>test</scope>
 		</dependency>
-				
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${dependency.version.slf4j}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
@@ -147,27 +146,27 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>${dependency.version.commons-lang3}</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>${dependency.version.commons-collections4}</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>commons-codec</groupId>
-		    <artifactId>commons-codec</artifactId>
-		    <version>${dependency.version.commons-codec}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${dependency.version.commons-lang3}</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>jquery</artifactId>
-		    <version>${dependency.version.jquery}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${dependency.version.commons-collections4}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${dependency.version.commons-codec}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${dependency.version.jquery}</version>
 		</dependency>
 
 		<dependency>
@@ -189,7 +188,7 @@
 					<target>${plugin.version.java}</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -217,7 +216,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -232,13 +231,13 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${plugin.version.maven-surefire-plugin}</version>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.sonar</groupId>
-			    <artifactId>sonar-maven3-plugin</artifactId>
-			    <version>${plugin.version.sonar-maven3-plugin}</version>
+				<artifactId>sonar-maven3-plugin</artifactId>
+				<version>${plugin.version.sonar-maven3-plugin}</version>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>

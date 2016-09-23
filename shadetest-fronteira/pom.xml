@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -19,7 +19,7 @@
 		<plugin.version.maven-jar-plugin>2.4</plugin.version.maven-jar-plugin>
 		<IA_HOME>C:\\Program Files (x86)\\InstallAnywhere 2012</IA_HOME>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.otojunior</groupId>
@@ -27,34 +27,34 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-clean-plugin</artifactId>
-			    <version>2.5</version>
-			    <configuration>
-			    	<filesets>
-			    		<fileset>
-			    			<directory>${basedir}/build12/build12_Build_Output</directory>
-			    		</fileset>
-			    		<fileset>
-			    			<directory>${basedir}/build12/build12locales_Default_Configuration</directory>
-			    		</fileset>
-			    		<fileset>
-		    				<directory>${basedir}/build12/</directory>
-			    			<includes>
-			    				<include>ia.credstore</include>
-			    				<include>buildlog.xml</include>
-			    				<include>build12Build.iap_xml</include>
-			    			</includes>
-			    		</fileset>
-			    	</filesets>
-			    </configuration>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}/build12/build12_Build_Output</directory>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/build12/build12locales_Default_Configuration</directory>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/build12/</directory>
+							<includes>
+								<include>ia.credstore</include>
+								<include>buildlog.xml</include>
+								<include>build12Build.iap_xml</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -68,7 +68,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -89,7 +89,7 @@
 					</archive>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -116,20 +116,20 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-shade-plugin</artifactId>
-			    <version>${plugin.version.maven-shade-plugin}</version>
-			    <executions>
-			    	<execution>
-			    		<phase>package</phase>
-			    		<goals>
-			    			<goal>shade</goal>
-			    		</goals>
-			    	</execution>
-			    </executions>
-			    <configuration>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${plugin.version.maven-shade-plugin}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
 					<minimizeJar>false</minimizeJar>
 					<filters>
 						<filter>
@@ -143,7 +143,7 @@
 					</filters>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>com.github.wvengen</groupId>
 				<artifactId>proguard-maven-plugin</artifactId>
@@ -157,14 +157,14 @@
 					</execution>
 				</executions>
 				<configuration>
-                    <obfuscate>true</obfuscate>
-                    <attach>true</attach>
+					<obfuscate>true</obfuscate>
+					<attach>true</attach>
 					<proguardVersion>${dependency.version.proguard}</proguardVersion>
 					<proguardInclude>${basedir}/proguard.conf</proguardInclude>
 					<libs>
-                        <lib>${java.home}/lib/rt.jar</lib>
-                        <lib>${java.home}/lib/jsse.jar</lib>
-                    </libs>
+						<lib>${java.home}/lib/rt.jar</lib>
+						<lib>${java.home}/lib/jsse.jar</lib>
+					</libs>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -174,12 +174,12 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-assembly-plugin</artifactId>
-			    <version>2.6</version>
-			    <executions>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
 					<execution>
 						<phase>package</phase>
 						<goals>
@@ -189,35 +189,42 @@
 				</executions>
 				<configuration>
 					<descriptors>
-		            	<descriptor>${basedir}/assembly.xml</descriptor>
-		          	</descriptors>
+						<descriptor>${basedir}/assembly.xml</descriptor>
+					</descriptors>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-antrun-plugin</artifactId>
-		        <version>1.8</version>
-		        <executions>
-		        	<execution>
-		        		<phase>install</phase>
-		        		<goals>
-		        			<goal>run</goal>
-		        		</goals>
-		        	</execution>
-		        </executions>
-		        <configuration>
-		        	<target>
-		        		<taskdef name="buildinstaller" classname="com.zerog.ia.integration.ant.InstallAnywhereAntTask">
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<target>
+						<taskdef name="buildinstaller"
+							classname="com.zerog.ia.integration.ant.InstallAnywhereAntTask">
 							<classpath>
 								<pathelement path="${IA_HOME}/resource/build/iaant.jar" />
 							</classpath>
-				    	</taskdef>
-				    	<buildinstaller IALocation="${IA_HOME}" IAProjectFile="${basedir}/build12/build12.iap_xml" ProjectVersionMajor="${parsedVersion.majorVersion}" ProjectVersionMinor="${parsedVersion.minorVersion}" ProjectVersionRevision="${parsedVersion.incrementalVersion}" ProjectVersionSubrevision="${parsedVersion.qualifier}" failOnError="true">
-					    		<env key="IA_BTV_PROJECT_VERSION_DISPLAY_NAME" value="${project.version}" />
-					    </buildinstaller>
-		        	</target>
-		        </configuration>
+						</taskdef>
+						<buildinstaller IALocation="${IA_HOME}"
+							IAProjectFile="${basedir}/build12/build12.iap_xml"
+							ProjectVersionMajor="${parsedVersion.majorVersion}"
+							ProjectVersionMinor="${parsedVersion.minorVersion}"
+							ProjectVersionRevision="${parsedVersion.incrementalVersion}"
+							ProjectVersionSubrevision="${parsedVersion.qualifier}"
+							failOnError="true">
+							<env key="IA_BTV_PROJECT_VERSION_DISPLAY_NAME" value="${project.version}" />
+						</buildinstaller>
+					</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
