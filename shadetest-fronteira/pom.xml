@@ -158,7 +158,7 @@
 				</executions>
 				<configuration>
 					<obfuscate>true</obfuscate>
-					<attach>true</attach>
+					<attach>false</attach>
 					<proguardVersion>${dependency.version.proguard}</proguardVersion>
 					<proguardInclude>${basedir}/proguard.conf</proguardInclude>
 					<libs>
