@@ -17,7 +17,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<plugin.version.maven-jar-plugin>2.4</plugin.version.maven-jar-plugin>
-		<IA_HOME>C:\\Program Files (x86)\\InstallAnywhere 2012</IA_HOME>
+		<IA_HOME>C:\\InstallAnywhere2012</IA_HOME>
 	</properties>
 
 	<dependencies>
@@ -188,6 +188,7 @@
 					</execution>
 				</executions>
 				<configuration>
+					<skipAssembly>true</skipAssembly>
 					<descriptors>
 						<descriptor>${basedir}/assembly.xml</descriptor>
 					</descriptors>
