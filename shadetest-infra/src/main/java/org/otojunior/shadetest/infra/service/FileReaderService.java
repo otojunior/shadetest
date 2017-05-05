@@ -25,21 +25,21 @@ public class FileReaderService {
 	 */
 	public String read(String arquivo) {
 		StringBuilder buffer = new StringBuilder();
-		try {
-			RandomAccessFile r = new RandomAccessFile(arquivo, "r");
+		try (RandomAccessFile r = new RandomAccessFile(arquivo, "r")) {
 			String linha = r.readLine();
 			while (linha != null) {
-				LOG.debug("linha lida: " + linha);
+				if (LOG.isDebugEnabled()) {
+					LOG.debug("linha lida: " + linha);
+				}
+				
 				buffer.
 					append(linha).
 					append(SystemUtils.LINE_SEPARATOR);
 				linha = r.readLine();
 			}
-			r.close();
 		} catch (IOException e) {
 			LOG.error("Erro de I/O", e);
 		}
 		return buffer.toString();
 	}
-
 }

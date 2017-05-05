@@ -20,12 +20,17 @@ import java.io.InputStream;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Manifest reader utilitary class.
  * 
  * @author Oto Junior
  */
 public class ManifestUtil {
+	/* Logger */
+	private static final Logger LOG = LoggerFactory.getLogger(ManifestUtil.class);
 	/* Manifest Path */
 	private static final String MANIFEST_PATH = "META-INF/MANIFEST.MF";
 	
@@ -56,6 +61,11 @@ public class ManifestUtil {
 	static {
 		loadManifest();
 	}
+	
+	/**
+	 * Construtor privado vazio.
+	 */
+	private ManifestUtil() { }
 	
 	/**
 	 * Get the manifest attribute value.
@@ -96,7 +106,7 @@ public class ManifestUtil {
 				attributes = manifest.getMainAttributes();
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 	}
 }

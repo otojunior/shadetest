@@ -33,7 +33,11 @@ public class TextFileReaderService {
 		for (int i = 1; i <= 2; i++) {
 			String arquivo = String.format("recursos/tabelas/tabela%d.txt", i);
 			String read = service.read(arquivo);
-			LOG.debug("Conjunto lido: " + read);
+
+			if (LOG.isDebugEnabled()) {
+				LOG.debug("Conjunto lido: " + read);
+			}
+			
 			buffer.append(read);
 		}
 		return buffer.toString();
