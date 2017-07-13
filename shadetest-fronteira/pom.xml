@@ -93,7 +93,8 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			
+			<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -118,6 +119,29 @@
 							</excludes>
 						</filter>
 					</filters>
+				</configuration>
+			</plugin>
+			-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<mainClass>org.otojunior.shadetest.fronteira.App</mainClass>
+							<classpathLayoutType>custom</classpathLayoutType>
+							<customClasspathLayout>lib/$${artifact.groupId}/$${artifact.artifactId}.$${artifact.extension}</customClasspathLayout>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Build>${buildNumber}</Implementation-Build>
+							<Implementation-Branch>${scmBranch}</Implementation-Branch>
+							<Implementation-Date>${timestamp}</Implementation-Date>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 
@@ -165,7 +189,6 @@
 					</execution>
 				</executions>
 				<configuration>
-					<skipAssembly>true</skipAssembly>
 					<descriptors>
 						<descriptor>${basedir}/assembly.xml</descriptor>
 					</descriptors>
