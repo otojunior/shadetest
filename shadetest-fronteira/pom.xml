@@ -24,6 +24,7 @@
 		<info.javaversion>${plugin.version.java}</info.javaversion>
 		<info.company.name>${project.organization.name}</info.company.name>
 		<info.company.email>shadetest@organizacao.org</info.company.email>
+		<pack.finalname>${project.build.finalName}.jar</pack.finalname>
 	</properties>
 
 	<dependencies>

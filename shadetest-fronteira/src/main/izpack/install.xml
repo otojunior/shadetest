@@ -45,7 +45,7 @@
 			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
 			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
 			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
-			<!-- <parsable targetfile="${INSTALL_PATH}/test.properties" /> -->
+			<file src="@{pack.finalname}" targetdir="${INSTALL_PATH}"/>
 		</pack>
 	</packs>
 
