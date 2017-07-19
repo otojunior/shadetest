@@ -5,12 +5,14 @@ package org.otojunior.shadetest.infra.util;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * @author 01456231650
  *
  */
+@Ignore
 public class ManifestUtilTest {
 
 	/**
