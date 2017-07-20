@@ -25,6 +25,7 @@
 		<info.company.name>${project.organization.name}</info.company.name>
 		<info.company.email>shadetest@organizacao.org</info.company.email>
 		<pack.finalname>${project.build.finalName}.jar</pack.finalname>
+		<res.stagingdir>${project.basedir}/src/main/izpack</res.stagingdir>
 	</properties>
 
 	<dependencies>
@@ -204,6 +205,31 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+			    <artifactId>launch4j-maven-plugin</artifactId>
+			    <version>1.7.18</version>
+			    <configuration>
+			    	<headerType>gui</headerType>
+			    	<jar>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.jar</jar>
+			    	<outfile>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.exe</outfile>
+			    	<singleInstance>
+						<mutexName>mutex_shadeteste</mutexName>
+					</singleInstance>
+					<jre>
+                        <minVersion>1.8.0</minVersion>
+                    </jre>
+			    </configuration>
+			    <executions>
+			    	<execution>
+			    		<phase>package</phase>
+			    		<goals>
+			    			<goal>launch4j</goal>
+			    		</goals>
+			    	</execution>
+			    </executions>
 			</plugin>
 		</plugins>
 	</build>

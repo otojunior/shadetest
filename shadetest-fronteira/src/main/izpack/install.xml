@@ -8,33 +8,54 @@
 		<appsubpath>@{info.appsubpath}</appsubpath>
 		<url>@{info.url}</url>
 		<javaversion>@{info.javaversion}</javaversion>
+		<requiresjdk>yes</requiresjdk>
 		<singleinstance>yes</singleinstance>
 	</info>
+
+	<resources>
+		<res id="customicons.xml" src="@{res.stagingdir}/customicons.xml" />
+		
+		<res id="JFrameIcon.png" src="@{res.stagingdir}/imagens/marcaSped16.png"/>
+		<res id="Installer.image" src="@{res.stagingdir}/imagens/marcaSped144.png"/>
+	</resources>
 
 	<locale>
 		<langpack iso3="bra" />
 	</locale>
 
-	<guiprefs width="640" height="480" resizable="no">
+	<guiprefs width="640" height="320" resizable="no">
 		<!-- <splash>images/peas_load.gif</splash> -->
-		<!--
+		
 		<laf name="substance">
 			<os family="windows" />
 			<os family="unix" />
-			<param name="variant" value="mist-silver" />
+			<param name="variant" value="dust-coffee" />
 		</laf>
-		-->
-		<!-- <laf name="substance">
+		
+		<!-- 
+		<laf name="substance">
 			<os family="mac" />
 			<param name="variant" value="mist-aqua" />
-		</laf> -->
-		<modifier key="useHeadingPanel" value="yes" />
+		</laf> 
+		-->
+		
+		<!-- <modifier key="useButtonIcons" value="no"/> -->
+		<!-- <modifier key="useLabelIcons" value="no"/> -->
+		<modifier key="labelGap" value="2"/>
+		<modifier key="layoutAnchor" value="NORTHWEST"/>
+		<modifier key="useHeadingPanel" value="yes"/>
+		<modifier key="headingImageOnLeft" value="yes"/>
+		<modifier key="headingLineCount" value="1"/>
+		<modifier key="headingFontSize" value="1.5"/>
+		<modifier key="headingBackgroundColor" value="0x00ffffff"/>
+		<modifier key="headingPanelCounter" value="text"/>
+		<modifier key="headingPanelCounterPos" value="inHeading"/>
 	</guiprefs>
 
 	<panels>
 		<panel classname="HelloPanel" />
 		<panel classname="TargetPanel" />
-		<!-- <panel classname="PacksPanel" /> -->
+		<panel classname="ShortcutPanel" />
 		<panel classname="InstallPanel" />
 		<panel classname="FinishPanel" />
 	</panels>
@@ -48,5 +69,4 @@
 			<file src="@{pack.finalname}" targetdir="${INSTALL_PATH}"/>
 		</pack>
 	</packs>
-
 </izpack:installation>
