@@ -5,25 +5,31 @@
 <!-- ***************************************************************************************** -->
 
 	<info>
-		<appname>@{info.appname}</appname>
-		<appversion>@{info.appversion}</appversion>
-		<appsubpath>@{info.appsubpath}</appsubpath>
+		<appname>@{izpack.info.appname}</appname>
+		<appversion>@{izpack.info.appversion}</appversion>
+		<appsubpath>@{izpack.info.appsubpath}</appsubpath>
 		<authors>
 			<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
 		</authors>
-		<url>@{info.url}</url>
-		<javaversion>@{info.javaversion}</javaversion>
+		<url>@{izpack.info.url}</url>
+		<javaversion>@{izpack.info.javaversion}</javaversion>
 		<requiresjdk>yes</requiresjdk>
 		<singleinstance>yes</singleinstance>
 	</info>
+	
+	<variables>
+		<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+	</variables>
+
 
 <!-- ***************************************************************************************** -->
 
 	<resources>
-		<res id="customicons.xml" src="@{res.stagingdir}/customicons.xml" />
+		<res id="customicons.xml" src="customicons.xml" />
+		<res id="shortcutSpec.xml" src="shortcutSpec.xml" />
 		
-		<res id="JFrameIcon.png" src="@{res.stagingdir}/imagens/marcaSped16.png"/>
-		<res id="Installer.image" src="@{res.stagingdir}/imagens/marcaSped144.png"/>
+		<res id="JFrameIcon.png" src="imagens/foguete_16px.png"/>
+		<res id="Installer.image" src="imagens/foguete_128px.png"/>
 	</resources>
 
 <!-- ***************************************************************************************** -->
@@ -68,8 +74,8 @@
 	<panels>
 		<panel classname="HelloPanel" />
 		<panel classname="TargetPanel" />
-		<panel classname="ShortcutPanel" />
 		<panel classname="InstallPanel" />
+		<panel classname="ShortcutPanel" id="my_shortcutpanel" />
 		<panel classname="FinishPanel" />
 	</panels>
 
@@ -81,7 +87,9 @@
 			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
 			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
 			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
-			<file src="@{pack.finalname}" targetdir="${INSTALL_PATH}"/>
+			<file src="@{izpack.pack.finalname}" targetdir="${INSTALL_PATH}"/>
+			<file src="imagens/foguete.ico" targetdir="${INSTALL_PATH}"/>
+			<file src="imagens/lixeira.ico" targetdir="${INSTALL_PATH}"/>
 		</pack>
 	</packs>
 	
@@ -91,7 +99,7 @@
 		Trecho para criação de entradas no Registro do Windows.
 		Funcionalidade de Instalação/Desinstalação do aplicativo
 		via Adicionar/Remover Programas do Painel de Controle (Windows).
-	 -->
+	-->
 	<listeners>
 	    <listener classname="RegistryInstallerListener" stage="install" >
 	        <os family="windows"/>
@@ -108,6 +116,13 @@
 	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
 	       <os family="windows"/>
 	    </native>
+	    
+	    <!--
+	    	Elementos utilizados para criação de ícones na Área de Trabalho
+	    	e Menu Iniciar do Windows.
+	    -->
+	    <native type="izpack" name="ShellLink.dll"/>
+	    <native type="izpack" name="ShellLink_x64.dll"/>
 	</natives>
 	
 <!-- ***************************************************************************************** -->

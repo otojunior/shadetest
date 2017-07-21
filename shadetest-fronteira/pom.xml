@@ -17,15 +17,14 @@
 	<properties>
 		<IA_HOME>C:\\InstallAnywhere2012</IA_HOME>
 		
-		<info.appname>${project.name}</info.appname>
-		<info.appversion>${project.version}</info.appversion>
-		<info.appsubpath>ShadeTestApplication</info.appsubpath>
-		<info.url>${project.organization.url}</info.url>
-		<info.javaversion>${plugin.version.java}</info.javaversion>
-		<info.company.name>${project.organization.name}</info.company.name>
-		<info.company.email>shadetest@organizacao.org</info.company.email>
-		<pack.finalname>${project.build.finalName}.jar</pack.finalname>
-		<res.stagingdir>${project.basedir}/src/main/izpack</res.stagingdir>
+		<izpack.info.appname>${project.name}</izpack.info.appname>
+		<izpack.info.appversion>${project.version}</izpack.info.appversion>
+		<izpack.info.appsubpath>ShadeTestApplication</izpack.info.appsubpath>
+		<izpack.info.url>${project.organization.url}</izpack.info.url>
+		<izpack.info.javaversion>${plugin.version.java}</izpack.info.javaversion>
+		<izpack.info.company.name>${project.organization.name}</izpack.info.company.name>
+		<izpack.info.company.email>shadetest@organizacao.org</izpack.info.company.email>
+		<izpack.pack.finalname>${project.build.finalName}.jar</izpack.pack.finalname>
 	</properties>
 
 	<dependencies>
