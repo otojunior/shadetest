@@ -12,7 +12,7 @@
 	<artifactId>shadetest-fronteira</artifactId>
 	<packaging>jar</packaging>
 
-	<name>shadetest Fronteira</name>
+	<name>ShadeTest :: Versão IzPack</name>
 
 	<properties>
 		<IA_HOME>C:\\InstallAnywhere2012</IA_HOME>

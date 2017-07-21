@@ -2,15 +2,22 @@
 	xmlns:izpack="http://izpack.org/schema/installation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
 
+<!-- ***************************************************************************************** -->
+
 	<info>
 		<appname>@{info.appname}</appname>
 		<appversion>@{info.appversion}</appversion>
 		<appsubpath>@{info.appsubpath}</appsubpath>
+		<authors>
+			<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
+		</authors>
 		<url>@{info.url}</url>
 		<javaversion>@{info.javaversion}</javaversion>
 		<requiresjdk>yes</requiresjdk>
 		<singleinstance>yes</singleinstance>
 	</info>
+
+<!-- ***************************************************************************************** -->
 
 	<resources>
 		<res id="customicons.xml" src="@{res.stagingdir}/customicons.xml" />
@@ -19,9 +26,13 @@
 		<res id="Installer.image" src="@{res.stagingdir}/imagens/marcaSped144.png"/>
 	</resources>
 
+<!-- ***************************************************************************************** -->
+
 	<locale>
 		<langpack iso3="bra" />
 	</locale>
+
+<!-- ***************************************************************************************** -->
 
 	<guiprefs width="640" height="320" resizable="no">
 		<!-- <splash>images/peas_load.gif</splash> -->
@@ -52,6 +63,8 @@
 		<modifier key="headingPanelCounterPos" value="inHeading"/>
 	</guiprefs>
 
+<!-- ***************************************************************************************** -->
+
 	<panels>
 		<panel classname="HelloPanel" />
 		<panel classname="TargetPanel" />
@@ -59,6 +72,8 @@
 		<panel classname="InstallPanel" />
 		<panel classname="FinishPanel" />
 	</panels>
+
+<!-- ***************************************************************************************** -->
 
 	<packs>
 		<pack name="Pack Principal" required="yes">
@@ -69,4 +84,32 @@
 			<file src="@{pack.finalname}" targetdir="${INSTALL_PATH}"/>
 		</pack>
 	</packs>
+	
+<!-- ***************************************************************************************** -->
+	
+	<!-- 
+		Trecho para criação de entradas no Registro do Windows.
+		Funcionalidade de Instalação/Desinstalação do aplicativo
+		via Adicionar/Remover Programas do Painel de Controle (Windows).
+	 -->
+	<listeners>
+	    <listener classname="RegistryInstallerListener" stage="install" >
+	        <os family="windows"/>
+	    </listener>
+	    <listener classname="RegistryUninstallerListener" stage="uninstall" >
+	        <os family="windows"/>
+	    </listener>
+	</listeners>
+	
+	<natives>
+		<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+	       <os family="windows"/>
+	    </native>
+	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
+	       <os family="windows"/>
+	    </native>
+	</natives>
+	
+<!-- ***************************************************************************************** -->
+
 </izpack:installation>
