@@ -28,8 +28,8 @@
 		<res id="customicons.xml" src="customicons.xml" />
 		<res id="shortcutSpec.xml" src="shortcutSpec.xml" />
 		
-		<res id="JFrameIcon.png" src="imagens/foguete_16px.png"/>
-		<res id="Installer.image" src="imagens/foguete_128px.png"/>
+		<res id="JFrameIcon.png" src="imagens/foguete_64px.png"/>
+		<res id="Installer.image" src="imagens/faixa_foguete_128px.png"/>
 	</resources>
 
 <!-- ***************************************************************************************** -->
@@ -40,7 +40,7 @@
 
 <!-- ***************************************************************************************** -->
 
-	<guiprefs width="640" height="320" resizable="no">
+	<guiprefs width="640" height="400" resizable="no">
 		<!-- <splash>images/peas_load.gif</splash> -->
 		
 		<laf name="substance">
@@ -75,7 +75,7 @@
 		<panel classname="HelloPanel" />
 		<panel classname="TargetPanel" />
 		<panel classname="InstallPanel" />
-		<panel classname="ShortcutPanel" id="my_shortcutpanel" />
+		<panel classname="ShortcutPanel" />
 		<panel classname="FinishPanel" />
 	</panels>
 
