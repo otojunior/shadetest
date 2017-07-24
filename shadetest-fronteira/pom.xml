@@ -161,8 +161,6 @@
 					    		<path>jrebundled</path>
 					    		<bundledJre64Bit>false</bundledJre64Bit>
 					    		<bundledJreAsFallback>false</bundledJreAsFallback>
-					    		<minVersion>1.8.0</minVersion>
-					    		<maxVersion>1.8.0_51</maxVersion>
 					    		<jdkPreference>jreOnly</jdkPreference>
 					    		<runtimeBits>32</runtimeBits>
 					    		<initialHeapSize>512</initialHeapSize>
@@ -172,7 +170,7 @@
 			    	</execution>
 			    	<execution>
 			    		<id>id-launch4j-instalador</id>
-			    		<phase>install</phase>
+			    		<phase>pre-integration-test</phase>
 			    		<goals>
 			    			<goal>launch4j</goal>
 			    		</goals>
@@ -180,17 +178,17 @@
 					    	<headerType>gui</headerType>
 					    	<jar>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.jar</jar>
 					    	<outfile>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.exe</outfile>
+					    	<icon>${project.build.directory}/${project.build.finalName}-dist/imagens/instalador.ico</icon>
 					    	<singleInstance>
 								<mutexName>mutex_shadetest</mutexName>
 							</singleInstance>
 							<jre>
-		                        <minVersion>1.8.0</minVersion>
+		                        <path>${project.build.directory}/${project.build.finalName}-dist/jrebundled</path>
 		                    </jre>
 					    </configuration>
 			    	</execution>
 			    </executions>
 			</plugin>
-			
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -295,34 +293,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			
-			<!--
-			<plugin>
-				<groupId>com.akathist.maven.plugins.launch4j</groupId>
-			    <artifactId>launch4j-maven-plugin</artifactId>
-			    <version>1.7.18</version>
-			    <configuration>
-			    	<headerType>gui</headerType>
-			    	<jar>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.jar</jar>
-			    	<outfile>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.exe</outfile>
-			    	<singleInstance>
-						<mutexName>mutex_shadeteste</mutexName>
-					</singleInstance>
-					<jre>
-                        <minVersion>1.8.0</minVersion>
-                    </jre>
-			    </configuration>
-			    <executions>
-			    	<execution>
-			    		<phase>package</phase>
-			    		<goals>
-			    			<goal>launch4j</goal>
-			    		</goals>
-			    	</execution>
-			    </executions>
-			</plugin>
-			-->
 		</plugins>
 	</build>
 </project>
