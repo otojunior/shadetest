@@ -7,7 +7,7 @@
 	
 	<shortcut 
 		name="Atalho ShadeTest" 
-		target="${INSTALL_PATH}/shadetest-fronteira.jar"
+		target="${INSTALL_PATH}/shadetest-fronteira.exe"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
