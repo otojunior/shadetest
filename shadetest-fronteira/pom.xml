@@ -113,14 +113,6 @@
 				<groupId>com.github.wvengen</groupId>
 				<artifactId>proguard-maven-plugin</artifactId>
 				<version>${plugin.version.proguard-maven-plugin}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>proguard</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<obfuscate>true</obfuscate>
 					<attach>false</attach>
@@ -131,6 +123,14 @@
 						<lib>${java.home}/lib/jsse.jar</lib>
 					</libs>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>proguard</goal>
+						</goals>
+					</execution>
+				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>net.sf.proguard</groupId>
@@ -139,6 +139,39 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+			    <artifactId>launch4j-maven-plugin</artifactId>
+			    <version>1.7.18</version>
+			    <configuration>
+			    	<headerType>gui</headerType>
+			    	<dontWrapJar>true</dontWrapJar>
+			    	<jar>${project.build.finalName}.jar</jar>
+			    	<outfile>${project.build.directory}/${project.build.finalName}.exe</outfile>
+			    	<icon>${project.basedir}/src/main/izpack/imagens/foguete.ico</icon>
+			    	<jre>
+			    		<path>jrebundled</path>
+			    		<bundledJre64Bit>false</bundledJre64Bit>
+			    		<bundledJreAsFallback>false</bundledJreAsFallback>
+			    		<minVersion>1.8.0</minVersion>
+			    		<maxVersion>1.8.0_51</maxVersion>
+			    		<jdkPreference>jreOnly</jdkPreference>
+			    		<runtimeBits>32</runtimeBits>
+			    		<initialHeapSize>512</initialHeapSize>
+			    		<maxHeapSize>1024</maxHeapSize>
+			    	</jre>
+			    </configuration>
+			    <executions>
+			    	<execution>
+			    		<phase>package</phase>
+			    		<goals>
+			    			<goal>launch4j</goal>
+			    		</goals>
+			    	</execution>
+			    </executions>
+			</plugin>
+			
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -187,7 +220,10 @@
 								<resource>
 									<directory>${project.build.directory}</directory>
 									<targetPath></targetPath>
-									<include>${project.build.finalName}.jar</include>
+									<includes>
+										<include>${project.build.finalName}.jar</include>
+										<include>${project.build.finalName}.exe</include>
+									</includes>
 								</resource>
 							</resources>
 						</configuration>
