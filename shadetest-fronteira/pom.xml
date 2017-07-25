@@ -170,7 +170,7 @@
 			    	</execution>
 			    	<execution>
 			    		<id>id-launch4j-instalador</id>
-			    		<phase>pre-integration-test</phase>
+			    		<phase>verify</phase>
 			    		<goals>
 			    			<goal>launch4j</goal>
 			    		</goals>
@@ -183,7 +183,7 @@
 								<mutexName>mutex_shadetest</mutexName>
 							</singleInstance>
 							<jre>
-		                        <path>${project.build.directory}/${project.build.finalName}-dist/jrebundled</path>
+		                        <minVersion>1.8.0</minVersion>
 		                    </jre>
 					    </configuration>
 			    	</execution>
