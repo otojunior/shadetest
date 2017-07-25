@@ -177,7 +177,7 @@
 			    		<configuration>
 							<headerType>gui</headerType>
 							<jar>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.jar</jar>
-							<outfile>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-teste.exe</outfile>
+							<outfile>${project.build.directory}/${project.build.finalName}-setup/ShadeTest-win32.exe</outfile>
 							<icon>${project.build.directory}/${project.build.finalName}-dist/imagens/instalador.ico</icon>
 							<singleInstance>
 								<mutexName>mutexteste</mutexName>
