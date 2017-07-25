@@ -25,6 +25,8 @@
 		<izpack.info.company.name>${project.organization.name}</izpack.info.company.name>
 		<izpack.info.company.email>shadetest@organizacao.org</izpack.info.company.email>
 		<izpack.pack.finalname>${project.build.finalName}</izpack.pack.finalname>
+		<izpack.staging>${project.build.directory}/${project.build.finalName}-dist</izpack.staging>
+		<izpack.staging.output>${project.build.directory}/${project.build.finalName}-setup</izpack.staging.output>
 	</properties>
 
 	<dependencies>
@@ -156,7 +158,7 @@
 					    	<dontWrapJar>true</dontWrapJar>
 					    	<jar>${project.build.finalName}.jar</jar>
 					    	<outfile>${project.build.directory}/${project.build.finalName}.exe</outfile>
-					    	<icon>${project.basedir}/src/main/izpack/imagens/foguete.ico</icon>
+					    	<icon>${project.basedir}/src/main/izpack/imagens/ico/foguete.ico</icon>
 					    	<jre>
 					    		<path>jrebundled</path>
 					    		<bundledJre64Bit>false</bundledJre64Bit>
@@ -176,9 +178,9 @@
 			    		</goals>
 			    		<configuration>
 							<headerType>gui</headerType>
-							<jar>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.jar</jar>
-							<outfile>${project.build.directory}/${project.build.finalName}-setup/ShadeTest-win32.exe</outfile>
-							<icon>${project.build.directory}/${project.build.finalName}-dist/imagens/instalador.ico</icon>
+							<jar>${izpack.staging.output}/${project.build.finalName}-setup.jar</jar>
+							<outfile>${izpack.staging.output}/ShadeTest-win32.exe</outfile>
+							<icon>${izpack.staging}/imagens/ico/instalador.ico</icon>
 							<singleInstance>
 								<mutexName>mutexteste</mutexName>
 							</singleInstance>
@@ -220,7 +222,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/${project.build.finalName}-dist</outputDirectory>
+							<outputDirectory>${izpack.staging}</outputDirectory>
 							<resources>
 								<resource>
 									<directory>${project.basedir}/recursos</directory>
@@ -259,7 +261,7 @@
 							<artifactId>OracleJRE</artifactId>
 							<version>8u51_windows_x86</version>	
 							<type>zip</type>
-							<outputDirectory>${project.build.directory}/${project.build.finalName}-dist/jrebundled</outputDirectory>
+							<outputDirectory>${izpack.staging}/jrebundled</outputDirectory>
 						</artifactItem>
 					</artifactItems>
 				</configuration>
@@ -278,8 +280,8 @@
 			    <artifactId>izpack-maven-plugin</artifactId>
 			    <version>5.1.1</version>
 			    <configuration>
-					<baseDir>${project.build.directory}/${project.build.finalName}-dist</baseDir>
-					<outputDirectory>${project.build.directory}/${project.build.finalName}-setup</outputDirectory>
+					<baseDir>${izpack.staging}</baseDir>
+					<outputDirectory>${izpack.staging.output}</outputDirectory>
 					<finalName>${project.build.finalName}-setup</finalName>
 					<mkdirs>true</mkdirs>
 				</configuration>

@@ -3,10 +3,10 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://izpack.org/schema/shortcuts http://izpack.org/schema/5.0/izpack-shortcuts-5.0.xsd">
  
-	<programGroup defaultName="ShadeTest Grupo de Programas"/>
+	<programGroup defaultName="ShadeTest Cia"/>
 	
 	<shortcut 
-		name="Atalho ShadeTest" 
+		name="ShadeTest Software" 
 		target="${INSTALL_PATH}/shadetest-fronteira.exe"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"

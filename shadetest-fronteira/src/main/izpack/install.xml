@@ -31,8 +31,8 @@
 		<res id="customicons.xml" src="install_icons.xml" />
 		<res id="shortcutSpec.xml" src="install_shortcuts.xml" />
 		
-		<res id="JFrameIcon.png" src="imagens/foguete_64px.png"/>
-		<res id="Installer.image" src="imagens/faixa_foguete_128px.png"/>
+		<res id="JFrameIcon.png" src="imagens/png/foguete_64px.png"/>
+		<res id="Installer.image" src="imagens/png/faixa_foguete_128px.png"/>
 	</resources>
 
 <!-- ***************************************************************************************** -->
@@ -93,8 +93,8 @@
 			<fileset dir="jrebundled" targetdir="${INSTALL_PATH}/jrebundled" override="true" />
 			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}"/>
 			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}"/>
-			<file src="imagens/foguete.ico" targetdir="${INSTALL_PATH}"/>
-			<file src="imagens/lixeira.ico" targetdir="${INSTALL_PATH}"/>
+			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>
+			<file src="imagens/ico/lixeira.ico" targetdir="${INSTALL_PATH}"/>
 		</pack>
 	</packs>
 	
