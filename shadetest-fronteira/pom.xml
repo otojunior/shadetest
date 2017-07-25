@@ -38,18 +38,12 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>shadetest</finalName>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.10</version>
+				<version>${plugin.version.build-helper-maven-plugin}</version>
 				<executions>
 					<execution>
 						<phase>initialize</phase>
@@ -145,7 +139,7 @@
 			<plugin>
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
 			    <artifactId>launch4j-maven-plugin</artifactId>
-			    <version>1.7.18</version>
+			    <version>${plugin.version.launch4j-maven-plugin}</version>
 			    <executions>
 			    	<execution>
 			    		<id>id-launch4j-executavel</id>
@@ -195,7 +189,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.6</version>
+				<version>${plugin.version.maven-assembly-plugin}</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -214,7 +208,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>${plugin.version.maven-resources-plugin}</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -253,7 +247,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>${plugin.version.maven-dependency-plugin}</version>
 				<configuration>
 					<artifactItems>
 						<artifactItem>
@@ -278,7 +272,7 @@
 			<plugin>
 			    <groupId>org.codehaus.izpack</groupId>
 			    <artifactId>izpack-maven-plugin</artifactId>
-			    <version>5.1.1</version>
+			    <version>${plugin.version.izpack-maven-plugin}</version>
 			    <configuration>
 					<baseDir>${izpack.staging}</baseDir>
 					<outputDirectory>${izpack.staging.output}</outputDirectory>
