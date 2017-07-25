@@ -28,8 +28,8 @@
 <!-- ***************************************************************************************** -->
 
 	<resources>
-		<res id="customicons.xml" src="customicons.xml" />
-		<res id="shortcutSpec.xml" src="shortcutSpec.xml" />
+		<res id="customicons.xml" src="install_icons.xml" />
+		<res id="shortcutSpec.xml" src="install_shortcuts.xml" />
 		
 		<res id="JFrameIcon.png" src="imagens/foguete_64px.png"/>
 		<res id="Installer.image" src="imagens/faixa_foguete_128px.png"/>
