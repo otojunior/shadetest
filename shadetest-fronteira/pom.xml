@@ -175,33 +175,15 @@
 			    			<goal>launch4j</goal>
 			    		</goals>
 			    		<configuration>
-							<dontWrapJar>false</dontWrapJar>
 							<headerType>gui</headerType>
 							<jar>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-setup.jar</jar>
 							<outfile>${project.build.directory}/${project.build.finalName}-setup/${project.build.finalName}-teste.exe</outfile>
 							<icon>${project.build.directory}/${project.build.finalName}-dist/imagens/instalador.ico</icon>
-							<errTitle></errTitle>
-							<cmdLine></cmdLine>
-							<chdir></chdir>
-							<priority>normal</priority>
-							<downloadUrl>http://java.com/download</downloadUrl>
-							<supportUrl></supportUrl>
-							<stayAlive>false</stayAlive>
-							<restartOnCrash>false</restartOnCrash>
-							<manifest></manifest>
-							<icon></icon>
 							<singleInstance>
 								<mutexName>mutexteste</mutexName>
-								<windowTitle></windowTitle>
 							</singleInstance>
 							<jre>
-								<path></path>
-								<bundledJre64Bit>false</bundledJre64Bit>
-								<bundledJreAsFallback>false</bundledJreAsFallback>
 								<minVersion>1.8.0</minVersion>
-								<maxVersion></maxVersion>
-								<jdkPreference>preferJre</jdkPreference>
-								<runtimeBits>64/32</runtimeBits>
 							</jre>
 					    </configuration>
 			    	</execution>
