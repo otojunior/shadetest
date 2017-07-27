@@ -7,7 +7,7 @@
 	
 	<shortcut 
 		name="ShadeTest Software" 
-		target="${INSTALL_PATH}/shadetest-fronteira.exe"
+		target="${INSTALL_PATH}/shadetest.exe"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
