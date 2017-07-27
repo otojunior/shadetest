@@ -227,6 +227,10 @@
 									<targetPath>configuracoes</targetPath>
 								</resource>
 								<resource>
+									<directory>${project.basedir}/mysql</directory>
+									<targetPath>mysql</targetPath>
+								</resource>
+								<resource>
 									<directory>${project.basedir}/src/main/izpack</directory>
 									<targetPath></targetPath>
 								</resource>
