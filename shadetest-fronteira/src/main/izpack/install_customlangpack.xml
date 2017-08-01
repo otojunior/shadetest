@@ -3,5 +3,6 @@
 	xsi:schemaLocation="http://izpack.org/schema/langpack http://izpack.org/schema/5.0/izpack-langpack-5.0.xsd">
 
 	<str id="installer.madewith" txt="Receita Federal do Brasil"/>
+	<str id="ProcessPanel.heading" txt="Verificando instância em execução"/>
 	
 </izpack:langpack>

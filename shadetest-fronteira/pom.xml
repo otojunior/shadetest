@@ -35,6 +35,11 @@
 			<artifactId>shadetest-dominio</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.otojunior</groupId>
+			<artifactId>shadetest-checainstancia</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

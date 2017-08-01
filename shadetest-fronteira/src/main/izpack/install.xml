@@ -31,10 +31,15 @@
 		<res id="customicons.xml" src="install_icons.xml" />
 		<res id="shortcutSpec.xml" src="install_shortcuts.xml" />
 		<res id="CustomLangPack.xml" src="install_customlangpack.xml"/>
+		<res id="ProcessPanel.Spec.xml" src="install_processpanel.xml"/>
 		
 		<res id="JFrameIcon.png" src="imagens/png/foguete_64px.png"/>
 		<res id="Installer.image" src="imagens/png/faixa_foguete_128px.png"/>
 	</resources>
+
+<!-- ***************************************************************************************** -->
+
+	<jar src="lib/org.otojunior/shadetest-checainstancia.jar" stage="install"/>
 
 <!-- ***************************************************************************************** -->
 
@@ -77,10 +82,11 @@
 
 	<panels>
 		<panel classname="HelloPanel" />
+		<panel classname="ProcessPanel" displayHidden="true" />
 		<panel classname="TargetPanel" />
 		<panel classname="InstallPanel" />
 		<panel classname="ShortcutPanel" />
-		<panel classname="FinishPanel" />
+		<panel classname="SimpleFinishPanel" />
 	</panels>
 
 <!-- ***************************************************************************************** -->
