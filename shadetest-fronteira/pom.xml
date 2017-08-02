@@ -27,6 +27,9 @@
 		<izpack.pack.finalname>${project.build.finalName}</izpack.pack.finalname>
 		<izpack.staging>${project.build.directory}/${project.build.finalName}-dist</izpack.staging>
 		<izpack.staging.output>${project.build.directory}/${project.build.finalName}-setup</izpack.staging.output>
+		<izpack.installername.windows>ShadeTest-win32</izpack.installername.windows>
+		<izpack.installername.linux32>ShadeTest-linux32</izpack.installername.linux32>
+		<izpack.installername.linux64>ShadeTest-linux64</izpack.installername.linux64>
 	</properties>
 
 	<dependencies>
@@ -177,8 +180,8 @@
 			    		</goals>
 			    		<configuration>
 							<headerType>gui</headerType>
-							<jar>${izpack.staging.output}/${project.build.finalName}-setup.jar</jar>
-							<outfile>${izpack.staging.output}/ShadeTest-win32.exe</outfile>
+							<jar>${izpack.staging.output}/${project.build.finalName}-setup-windows.jar</jar>
+							<outfile>${izpack.staging.output}/${izpack.installername.windows}.exe</outfile>
 							<icon>${izpack.staging}/imagens/ico/instalador.ico</icon>
 							<singleInstance>
 								<mutexName>mutexteste</mutexName>
@@ -263,19 +266,33 @@
 						<goals>
 							<goal>unpack</goal>
 						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u144-windows-i586</version>	
+									<type>tar.gz</type>
+									<outputDirectory>${izpack.staging}/windows</outputDirectory>
+								</artifactItem>
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u144-linux-i586</version>	
+									<type>tar.gz</type>
+									<outputDirectory>${izpack.staging}/linux32</outputDirectory>
+								</artifactItem>
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u144-linux-x64</version>	
+									<type>tar.gz</type>
+									<outputDirectory>${izpack.staging}/linux64</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<artifactItems>
-						<artifactItem>
-							<groupId>br.gov.serpro.sped</groupId>
-							<artifactId>jre</artifactId>
-							<version>8u144-windows-i586</version>	
-							<type>tar.gz</type>
-							<outputDirectory>${izpack.staging}</outputDirectory>
-						</artifactItem>
-					</artifactItems>
-				</configuration>
 			</plugin>
 			
 			<plugin>
@@ -291,24 +308,25 @@
 						</goals>
 						<configuration>
 					    	<target>
-					    		<move todir="${izpack.staging}/jre">
-									<fileset dir="${izpack.staging}/jre1.8.0_144"/>
+					    		<move todir="${izpack.staging}/jre/windows">
+									<fileset dir="${izpack.staging}/windows/jre1.8.0_144">
+										<include name="bin/**"/>
+										<include name="lib/**"/>
+									</fileset>
+								</move>
+								<move todir="${izpack.staging}/jre/linux32">
+									<fileset dir="${izpack.staging}/linux32/jre1.8.0_144">
+										<include name="bin/**"/>
+										<include name="lib/**"/>
+									</fileset>
+								</move>
+								<move todir="${izpack.staging}/jre/linux64">
+									<fileset dir="${izpack.staging}/linux64/jre1.8.0_144">
+										<include name="bin/**"/>
+										<include name="lib/**"/>
+									</fileset>
 								</move>
 					    	</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>id-antrun-linux</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<move 
-									file="${izpack.staging.output}/${project.build.finalName}-setup.jar" 
-									tofile="${izpack.staging.output}/ShadeTest-linux.jar"/>
-							</target>
 						</configuration>
 					</execution>
 				</executions>
@@ -320,19 +338,48 @@
 			    <version>${plugin.version.izpack-maven-plugin}</version>
 				<executions>
 					<execution>
-						<id>id-izpack</id>
+						<id>id-izpack-windows</id>
 						<phase>package</phase>
 						<goals>
 							<goal>izpack</goal>
 						</goals>
+						<configuration>
+							<baseDir>${izpack.staging}</baseDir>
+							<installFile>${basedir}/src/main/izpack/install_windows.xml</installFile>
+							<outputDirectory>${izpack.staging.output}</outputDirectory>
+							<finalName>${project.build.finalName}-setup-windows</finalName>
+							<mkdirs>true</mkdirs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id-izpack-linux32</id>
+						<phase>package</phase>
+						<goals>
+							<goal>izpack</goal>
+						</goals>
+						<configuration>
+							<baseDir>${izpack.staging}</baseDir>
+							<installFile>${basedir}/src/main/izpack/install_linux32.xml</installFile>
+							<outputDirectory>${izpack.staging.output}</outputDirectory>
+							<finalName>${izpack.installername.linux32}</finalName>
+							<mkdirs>true</mkdirs>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id-izpack-linux64</id>
+						<phase>package</phase>
+						<goals>
+							<goal>izpack</goal>
+						</goals>
+						<configuration>
+							<baseDir>${izpack.staging}</baseDir>
+							<installFile>${basedir}/src/main/izpack/install_linux64.xml</installFile>
+							<outputDirectory>${izpack.staging.output}</outputDirectory>
+							<finalName>${izpack.installername.linux64}</finalName>
+							<mkdirs>true</mkdirs>
+						</configuration>
 					</execution>
 				</executions>
-			    <configuration>
-					<baseDir>${izpack.staging}</baseDir>
-					<outputDirectory>${izpack.staging.output}</outputDirectory>
-					<finalName>${project.build.finalName}-setup</finalName>
-					<mkdirs>true</mkdirs>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -29,7 +29,8 @@
 
 	<resources>
 		<res id="customicons.xml" src="install_icons.xml" />
-		<res id="shortcutSpec.xml" src="install_shortcuts.xml" />
+		<res id="Win_shortcutSpec.xml" src="install_windows_shortcuts.xml" />
+		<res id="Unix_shortcutSpec.xml" src="install_unix_shortcuts.xml" />
 		<res id="CustomLangPack.xml" src="install_customlangpack.xml"/>
 		<res id="ProcessPanel.Spec.xml" src="install_processpanel.xml"/>
 		
@@ -97,9 +98,8 @@
 			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
 			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
 			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
-			<fileset dir="jre" targetdir="${INSTALL_PATH}/jre" override="true" />
+			<fileset dir="jre/linux32" targetdir="${INSTALL_PATH}/jre" override="true" />
 			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}"/>
-			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}"/>
 			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>
 			<file src="imagens/ico/lixeira.ico" targetdir="${INSTALL_PATH}"/>
 		</pack>

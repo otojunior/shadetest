@@ -1,0 +1,147 @@
+<izpack:installation version="5.0"
+	xmlns:izpack="http://izpack.org/schema/installation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+<!-- ***************************************************************************************** -->
+
+	<info>
+		<appname>@{izpack.info.appname}</appname>
+		<appversion>@{izpack.info.appversion}</appversion>
+		<appsubpath>@{izpack.info.appsubpath}</appsubpath>
+		<authors>
+			<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
+		</authors>
+		<url>@{izpack.info.url}</url>
+		<javaversion>@{izpack.info.javaversion}</javaversion>
+		<requiresjdk>yes</requiresjdk>
+		<singleinstance>yes</singleinstance>
+	</info>
+	
+<!-- ***************************************************************************************** -->	
+	
+	<variables>
+		<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+		<variable name="TargetPanel.dir.windows" value="C:/ShadeTestFolder/@{izpack.info.appsubpath}"/>
+  		<variable name="TargetPanel.dir.unix" value="/usr/local/shadetestfolder/@{izpack.info.appsubpath}"/>
+	</variables>
+
+<!-- ***************************************************************************************** -->
+
+	<resources>
+		<res id="customicons.xml" src="install_icons.xml" />
+		<res id="Win_shortcutSpec.xml" src="install_windows_shortcuts.xml" />
+		<res id="Unix_shortcutSpec.xml" src="install_unix_shortcuts.xml" />
+		<res id="CustomLangPack.xml" src="install_customlangpack.xml"/>
+		<res id="ProcessPanel.Spec.xml" src="install_processpanel.xml"/>
+		
+		<res id="JFrameIcon.png" src="imagens/png/foguete_64px.png"/>
+		<res id="Installer.image" src="imagens/png/faixa_foguete_128px.png"/>
+	</resources>
+
+<!-- ***************************************************************************************** -->
+
+	<jar src="lib/org.otojunior/shadetest-checainstancia.jar" stage="install"/>
+
+<!-- ***************************************************************************************** -->
+
+	<locale>
+		<langpack iso3="bra" />
+	</locale>
+
+<!-- ***************************************************************************************** -->
+
+	<guiprefs width="640" height="400" resizable="no">
+		<!-- <splash>images/peas_load.gif</splash> -->
+		
+		<laf name="substance">
+			<os family="windows" />
+			<os family="unix" />
+			<param name="variant" value="dust-coffee" />
+		</laf>
+		
+		<!-- 
+		<laf name="substance">
+			<os family="mac" />
+			<param name="variant" value="mist-aqua" />
+		</laf> 
+		-->
+		
+		<!-- <modifier key="useButtonIcons" value="no"/> -->
+		<!-- <modifier key="useLabelIcons" value="no"/> -->
+		<modifier key="labelGap" value="2"/>
+		<modifier key="layoutAnchor" value="NORTHWEST"/>
+		<modifier key="useHeadingPanel" value="yes"/>
+		<modifier key="headingImageOnLeft" value="yes"/>
+		<modifier key="headingLineCount" value="1"/>
+		<modifier key="headingFontSize" value="1.5"/>
+		<modifier key="headingBackgroundColor" value="0x00ffffff"/>
+		<modifier key="headingPanelCounter" value="text"/>
+		<modifier key="headingPanelCounterPos" value="inHeading"/>
+	</guiprefs>
+
+<!-- ***************************************************************************************** -->
+
+	<panels>
+		<panel classname="HelloPanel" />
+		<panel classname="ProcessPanel" displayHidden="true" />
+		<panel classname="TargetPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="ShortcutPanel" />
+		<panel classname="SimpleFinishPanel" />
+	</panels>
+
+<!-- ***************************************************************************************** -->
+
+	<packs>
+		<pack name="Pack Principal" required="yes">
+			<description>Arquivos principais da aplicação</description>
+			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
+			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
+			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
+			<fileset dir="jre/windows" targetdir="${INSTALL_PATH}/jre" override="true" />
+			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}"/>
+			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}"/>
+			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>
+			<file src="imagens/ico/lixeira.ico" targetdir="${INSTALL_PATH}"/>
+		</pack>
+		<pack name="Pack Banco de Dados" required="yes" uninstall="false">
+			<description>Banco de dados da aplicação</description>
+			<fileset dir="mysql" targetdir="${INSTALL_PATH}/mysql" override="false" />
+		</pack>
+	</packs>
+	
+<!-- ***************************************************************************************** -->
+	
+	<!-- 
+		Trecho para criação de entradas no Registro do Windows.
+		Funcionalidade de Instalação/Desinstalação do aplicativo
+		via Adicionar/Remover Programas do Painel de Controle (Windows).
+	-->
+	<listeners>
+	    <listener classname="RegistryInstallerListener" stage="install" >
+	        <os family="windows"/>
+	    </listener>
+	    <listener classname="RegistryUninstallerListener" stage="uninstall" >
+	        <os family="windows"/>
+	    </listener>
+	</listeners>
+	
+	<natives>
+		<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+	       <os family="windows"/>
+	    </native>
+	    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
+	       <os family="windows"/>
+	    </native>
+	    
+	    <!--
+	    	Elementos utilizados para criação de ícones na Área de Trabalho
+	    	e Menu Iniciar do Windows.
+	    -->
+	    <native type="izpack" name="ShellLink.dll"/>
+	    <native type="izpack" name="ShellLink_x64.dll"/>
+	</natives>
+	
+<!-- ***************************************************************************************** -->
+
+</izpack:installation>
