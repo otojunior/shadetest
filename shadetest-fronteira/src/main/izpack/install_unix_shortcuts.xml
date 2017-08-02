@@ -7,7 +7,7 @@
 	
 	<shortcut 
 		name="ShadeTest Software" 
-		target="jre/bin/java -jar shadetest.jar"
+		target="${INSTALL_PATH}/jre/bin/java -jar shadetest.jar"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
@@ -17,11 +17,11 @@
 		
 	<shortcut 
 		name="Desinstalar ShadeTest" 
-		target="jre/bin/java -jar Uninstaller/uninstaller.jar"
-		workingDirectory="${INSTALL_PATH}"
+		target="${INSTALL_PATH}/jre/bin/java -jar ${INSTALL_PATH}/Uninstaller/uninstaller.jar"
 		iconFile="${INSTALL_PATH}/lixeira.ico" 
 		programGroup="true"
 		desktop="true"
+		type="Application"
 		encoding="UTF-8" />
 
 </izpack:shortcuts>

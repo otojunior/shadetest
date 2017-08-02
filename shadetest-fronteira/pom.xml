@@ -320,12 +320,14 @@
 										<include name="lib/**"/>
 									</fileset>
 								</move>
+								<chmod file="${izpack.staging}/jre/linux32/bin/java" perm="+x"/>
 								<move todir="${izpack.staging}/jre/linux64">
 									<fileset dir="${izpack.staging}/linux64/jre1.8.0_144">
 										<include name="bin/**"/>
 										<include name="lib/**"/>
 									</fileset>
 								</move>
+								<chmod file="${izpack.staging}/jre/linux64/bin/java" perm="+x"/>
 					    	</target>
 						</configuration>
 					</execution>
