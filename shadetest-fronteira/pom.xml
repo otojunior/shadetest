@@ -114,6 +114,14 @@
 				<groupId>com.github.wvengen</groupId>
 				<artifactId>proguard-maven-plugin</artifactId>
 				<version>${plugin.version.proguard-maven-plugin}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>proguard</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<obfuscate>true</obfuscate>
 					<attach>false</attach>
@@ -124,14 +132,6 @@
 						<lib>${java.home}/lib/jsse.jar</lib>
 					</libs>
 				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>proguard</goal>
-						</goals>
-					</execution>
-				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>net.sf.proguard</groupId>
@@ -257,6 +257,14 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>${plugin.version.maven-dependency-plugin}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<artifactItems>
 						<artifactItem>
@@ -268,33 +276,40 @@
 						</artifactItem>
 					</artifactItems>
 				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-antrun-plugin</artifactId>
 			    <version>1.8</version>
-			    <configuration>
-			    	<target>
-			    		<move todir="${izpack.staging}/jre">
-							<fileset dir="${izpack.staging}/jre1.8.0_144"/>
-						</move>
-			    	</target>
-			    </configuration>
 			    <executions>
 					<execution>
+						<id>id-antrun-jre</id>
 						<phase>package</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
+						<configuration>
+					    	<target>
+					    		<move todir="${izpack.staging}/jre">
+									<fileset dir="${izpack.staging}/jre1.8.0_144"/>
+								</move>
+					    	</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>id-antrun-linux</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<move 
+									file="${izpack.staging.output}/${project.build.finalName}-setup.jar" 
+									tofile="${izpack.staging.output}/ShadeTest-linux.jar"/>
+							</target>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -303,12 +318,6 @@
 			    <groupId>org.codehaus.izpack</groupId>
 			    <artifactId>izpack-maven-plugin</artifactId>
 			    <version>${plugin.version.izpack-maven-plugin}</version>
-			    <configuration>
-					<baseDir>${izpack.staging}</baseDir>
-					<outputDirectory>${izpack.staging.output}</outputDirectory>
-					<finalName>${project.build.finalName}-setup</finalName>
-					<mkdirs>true</mkdirs>
-				</configuration>
 				<executions>
 					<execution>
 						<id>id-izpack</id>
@@ -318,6 +327,12 @@
 						</goals>
 					</execution>
 				</executions>
+			    <configuration>
+					<baseDir>${izpack.staging}</baseDir>
+					<outputDirectory>${izpack.staging.output}</outputDirectory>
+					<finalName>${project.build.finalName}-setup</finalName>
+					<mkdirs>true</mkdirs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
