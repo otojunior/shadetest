@@ -159,7 +159,7 @@
 					    	<outfile>${project.build.directory}/${project.build.finalName}.exe</outfile>
 					    	<icon>${project.basedir}/src/main/izpack/imagens/ico/foguete.ico</icon>
 					    	<jre>
-					    		<path>jrebundled</path>
+					    		<path>jre</path>
 					    		<bundledJre64Bit>false</bundledJre64Bit>
 					    		<bundledJreAsFallback>false</bundledJreAsFallback>
 					    		<jdkPreference>jreOnly</jdkPreference>
@@ -260,11 +260,11 @@
 				<configuration>
 					<artifactItems>
 						<artifactItem>
-							<groupId>br.gov.serpro.sped.jvm</groupId>
-							<artifactId>OracleJRE</artifactId>
-							<version>8u51_windows_x86</version>	
-							<type>zip</type>
-							<outputDirectory>${izpack.staging}/jrebundled</outputDirectory>
+							<groupId>br.gov.serpro.sped</groupId>
+							<artifactId>jre</artifactId>
+							<version>8u144-windows-i586</version>	
+							<type>tar.gz</type>
+							<outputDirectory>${izpack.staging}</outputDirectory>
 						</artifactItem>
 					</artifactItems>
 				</configuration>
@@ -273,6 +273,27 @@
 						<phase>package</phase>
 						<goals>
 							<goal>unpack</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-antrun-plugin</artifactId>
+			    <version>1.8</version>
+			    <configuration>
+			    	<target>
+			    		<move todir="${izpack.staging}/jre">
+							<fileset dir="${izpack.staging}/jre1.8.0_144"/>
+						</move>
+			    	</target>
+			    </configuration>
+			    <executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
 						</goals>
 					</execution>
 				</executions>
