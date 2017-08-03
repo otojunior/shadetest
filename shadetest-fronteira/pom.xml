@@ -27,9 +27,35 @@
 		<izpack.pack.finalname>${project.build.finalName}</izpack.pack.finalname>
 		<izpack.staging>${project.build.directory}/${project.build.finalName}-dist</izpack.staging>
 		<izpack.staging.output>${project.build.directory}/${project.build.finalName}-setup</izpack.staging.output>
+		
+		<!-- 
+			NOME DOS ARQUIVOS DE INSTALAÇÃO GERADOS
+			1. 	O arquivo de instalação para Windows possui a extensão .exe e é gerado
+				pelo plugin do Launch4J especificado neste POM.
+			2. 	O arquivo de instação do Linux (32 e 64 bits) possui a extensão .jar e
+				é gerado diretamente pelo plugin do IzPack especificado neste POM. 
+		-->
 		<izpack.installername.windows>ShadeTest-win32</izpack.installername.windows>
 		<izpack.installername.linux32>ShadeTest-linux32</izpack.installername.linux32>
 		<izpack.installername.linux64>ShadeTest-linux64</izpack.installername.linux64>
+		
+		<!--  
+			PROPRIEDADES DO JAVA EMBUTIDO
+			Usado para a trocar a versão da JRE embutida na aplicação.
+			1. 	Os arquivos da JRE foram obtidos diretamente da Oracle e feito o deploy 
+				(GAV) como especificado pelo plugin maven-dependency-plugin:copy descrito 
+				neste POM.
+			2.  Tais propriedades são usadas tanto no elemento <pack> do arquivo de configuração
+				do IzPack (descritor de instalação), como no jre embutido especificado no plugin
+				do Launch4J neste POM.
+			3. 	A propriedade izpack.jre.bundled.folder deve ser especificada EXATAMENTE como
+				o nome da pasta compactada nos arquivos .tar.gz que por sua vez foram usados
+				como insumo de deploy, os arquivos da JRE ORIGINAIS da Oracle. 
+		--> 
+		<izpack.jre.bundled.file.windows>jre-8u144-windows-i586.tar.gz</izpack.jre.bundled.file.windows>
+		<izpack.jre.bundled.file.linux32>jre-8u144-linux-i586.tar.gz</izpack.jre.bundled.file.linux32>
+		<izpack.jre.bundled.file.linux64>jre-8u144-linux-x64.tar.gz</izpack.jre.bundled.file.linux64>
+		<izpack.jre.bundled.folder>jre1.8.0_144</izpack.jre.bundled.folder>
 	</properties>
 
 	<dependencies>
@@ -162,7 +188,7 @@
 					    	<outfile>${project.build.directory}/${project.build.finalName}.exe</outfile>
 					    	<icon>${project.basedir}/src/main/izpack/imagens/ico/foguete.ico</icon>
 					    	<jre>
-					    		<path>jre</path>
+					    		<path>${izpack.jre.bundled.folder}</path>
 					    		<bundledJre64Bit>false</bundledJre64Bit>
 					    		<bundledJreAsFallback>false</bundledJreAsFallback>
 					    		<jdkPreference>jreOnly</jdkPreference>
@@ -264,71 +290,30 @@
 					<execution>
 						<phase>package</phase>
 						<goals>
-							<goal>unpack</goal>
+							<goal>copy</goal>
 						</goals>
 						<configuration>
+							<outputDirectory>${izpack.staging}</outputDirectory>
 							<artifactItems>
 								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
 									<version>8u144-windows-i586</version>	
 									<type>tar.gz</type>
-									<outputDirectory>${izpack.staging}/windows</outputDirectory>
 								</artifactItem>
 								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
 									<version>8u144-linux-i586</version>	
 									<type>tar.gz</type>
-									<outputDirectory>${izpack.staging}/linux32</outputDirectory>
 								</artifactItem>
 								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
 									<version>8u144-linux-x64</version>	
 									<type>tar.gz</type>
-									<outputDirectory>${izpack.staging}/linux64</outputDirectory>
 								</artifactItem>
 							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-antrun-plugin</artifactId>
-			    <version>1.8</version>
-			    <executions>
-					<execution>
-						<id>id-antrun-jre</id>
-						<phase>package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-					    	<target>
-					    		<move todir="${izpack.staging}/jre/windows">
-									<fileset dir="${izpack.staging}/windows/jre1.8.0_144">
-										<include name="bin/**"/>
-										<include name="lib/**"/>
-									</fileset>
-								</move>
-								<move todir="${izpack.staging}/jre/linux32">
-									<fileset dir="${izpack.staging}/linux32/jre1.8.0_144">
-										<include name="bin/**"/>
-										<include name="lib/**"/>
-									</fileset>
-								</move>
-								<move todir="${izpack.staging}/jre/linux64">
-									<fileset dir="${izpack.staging}/linux64/jre1.8.0_144">
-										<include name="bin/**"/>
-										<include name="lib/**"/>
-									</fileset>
-								</move>
-								<chmod file="${izpack.staging}/jre/linux32/bin/java" perm="ugo+rx" verbose="true"/>
-								<chmod file="${izpack.staging}/jre/linux64/bin/java" perm="ugo+rx" verbose="true"/>
-					    	</target>
 						</configuration>
 					</execution>
 				</executions>

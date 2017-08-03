@@ -26,7 +26,6 @@
 			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
 			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
 			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
-			<fileset dir="jre/windows" targetdir="${INSTALL_PATH}/jre" override="true" />
 			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}"/>
 			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}"/>
 			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>
@@ -34,7 +33,11 @@
 		</pack>
 		<pack name="Pack Banco de Dados" required="yes" uninstall="false">
 			<description>Banco de dados da aplicação</description>
-			<fileset dir="mysql" targetdir="${INSTALL_PATH}/mysql" override="false" />
+			<fileset dir="mysql" targetdir="${INSTALL_PATH}/mysql" />
+		</pack>
+		<pack name="Pack Java Embutido" required="yes" uninstall="true">
+			<description>Java (JRE) embutido para execução da aplicação</description>
+			<file src="@{izpack.jre.bundled.file.windows}" targetdir="${INSTALL_PATH}" unpack="true" override="true"/>
 		</pack>
 	</packs>
 	
