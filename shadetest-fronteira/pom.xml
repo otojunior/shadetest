@@ -347,7 +347,7 @@
 						</goals>
 						<configuration>
 							<baseDir>${izpack.staging}</baseDir>
-							<installFile>${basedir}/src/main/izpack/install_windows.xml</installFile>
+							<installFile>${basedir}/src/main/izpack/install_main_os_windows.xml</installFile>
 							<outputDirectory>${izpack.staging.output}</outputDirectory>
 							<finalName>${project.build.finalName}-setup-windows</finalName>
 							<mkdirs>true</mkdirs>
@@ -361,7 +361,7 @@
 						</goals>
 						<configuration>
 							<baseDir>${izpack.staging}</baseDir>
-							<installFile>${basedir}/src/main/izpack/install_linux32.xml</installFile>
+							<installFile>${basedir}/src/main/izpack/install_main_os_linux32.xml</installFile>
 							<outputDirectory>${izpack.staging.output}</outputDirectory>
 							<finalName>${izpack.installername.linux32}</finalName>
 							<mkdirs>true</mkdirs>
@@ -375,7 +375,7 @@
 						</goals>
 						<configuration>
 							<baseDir>${izpack.staging}</baseDir>
-							<installFile>${basedir}/src/main/izpack/install_linux64.xml</installFile>
+							<installFile>${basedir}/src/main/izpack/install_main_os_linux64.xml</installFile>
 							<outputDirectory>${izpack.staging.output}</outputDirectory>
 							<finalName>${izpack.installername.linux64}</finalName>
 							<mkdirs>true</mkdirs>

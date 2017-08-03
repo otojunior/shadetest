@@ -22,17 +22,17 @@
 	<variables>
 		<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
 		<variable name="TargetPanel.dir.windows" value="C:/ShadeTestFolder/@{izpack.info.appsubpath}"/>
-  		<variable name="TargetPanel.dir.unix" value="/usr/local/shadetestfolder/@{izpack.info.appsubpath}"/>
+  		<variable name="TargetPanel.dir.unix" value="${USER_HOME}/shadetestfolder/@{izpack.info.appsubpath}"/>
 	</variables>
 
 <!-- ***************************************************************************************** -->
 
 	<resources>
-		<res id="customicons.xml" src="install_icons.xml" />
-		<res id="Win_shortcutSpec.xml" src="install_windows_shortcuts.xml" />
-		<res id="Unix_shortcutSpec.xml" src="install_unix_shortcuts.xml" />
-		<res id="CustomLangPack.xml" src="install_customlangpack.xml"/>
-		<res id="ProcessPanel.Spec.xml" src="install_processpanel.xml"/>
+		<res id="customicons.xml" src="install_res_icons.xml" />
+		<res id="Win_shortcutSpec.xml" src="install_res_windows_shortcuts.xml" />
+		<res id="Unix_shortcutSpec.xml" src="install_res_unix_shortcuts.xml" />
+		<res id="CustomLangPack.xml" src="install_res_customlangpack.xml"/>
+		<res id="ProcessPanel.Spec.xml" src="install_res_processpanel.xml"/>
 		
 		<res id="JFrameIcon.png" src="imagens/png/foguete_64px.png"/>
 		<res id="Installer.image" src="imagens/png/faixa_foguete_128px.png"/>
@@ -98,7 +98,7 @@
 			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
 			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
 			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
-			<fileset dir="jre/windows" targetdir="${INSTALL_PATH}/jre" override="true" />
+			<fileset dir="jre/linux64" targetdir="${INSTALL_PATH}/jre" override="true" />
 			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}"/>
 			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}"/>
 			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>

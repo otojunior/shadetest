@@ -28,11 +28,11 @@
 <!-- ***************************************************************************************** -->
 
 	<resources>
-		<res id="customicons.xml" src="install_icons.xml" />
-		<res id="Win_shortcutSpec.xml" src="install_windows_shortcuts.xml" />
-		<res id="Unix_shortcutSpec.xml" src="install_unix_shortcuts.xml" />
-		<res id="CustomLangPack.xml" src="install_customlangpack.xml"/>
-		<res id="ProcessPanel.Spec.xml" src="install_processpanel.xml"/>
+		<res id="customicons.xml" src="install_res_icons.xml" />
+		<res id="Win_shortcutSpec.xml" src="install_res_windows_shortcuts.xml" />
+		<res id="Unix_shortcutSpec.xml" src="install_res_unix_shortcuts.xml" />
+		<res id="CustomLangPack.xml" src="install_res_customlangpack.xml"/>
+		<res id="ProcessPanel.Spec.xml" src="install_res_processpanel.xml"/>
 		
 		<res id="JFrameIcon.png" src="imagens/png/foguete_64px.png"/>
 		<res id="Installer.image" src="imagens/png/faixa_foguete_128px.png"/>
