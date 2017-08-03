@@ -50,7 +50,10 @@
 				do Launch4J neste POM.
 			3. 	A propriedade izpack.jre.bundled.folder deve ser especificada EXATAMENTE como
 				o nome da pasta compactada nos arquivos .tar.gz que por sua vez foram usados
-				como insumo de deploy, os arquivos da JRE ORIGINAIS da Oracle. 
+				como insumo de deploy, os arquivos da JRE ORIGINAIS da Oracle.
+			4.	O caminho do atalho no Linux deve ser especificado de forma ABSOLUTA no arquivo
+				de atalhos install_res_unix_shortcuts.xml. Este arquivo NÃO ACEITA variáveis
+				vindas do POM. (Ainda não foi descoberta uma forma de fazer isso). 
 		--> 
 		<izpack.jre.bundled.file.windows>jre-8u144-windows-i586.tar.gz</izpack.jre.bundled.file.windows>
 		<izpack.jre.bundled.file.linux32>jre-8u144-linux-i586.tar.gz</izpack.jre.bundled.file.linux32>
