@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>org.otojunior</groupId>
+	<artifactId>shadetest-checainstancia</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>shadetest Checa Instância ao Instalar</name>
+	<url>http://www.org.otojunior/shadetest</url>
+
+	<organization>
+		<name>Organization org.otojunior</name>
+		<url>http://www.org.otojunior</url>
+	</organization>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<scm>
+		<developerConnection>scm:git:git@github.com:otojunior/shadetest-checainstancia.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>mvnrepo-snapshot-${project.artifactId}</id>
+			<url>file://${project.build.directory}/mvn-repo/snapshot</url>
+		</snapshotRepository>
+		<repository>
+			<id>mvnrepo-release-${project.artifactId}</id>
+			<url>file://${project.build.directory}/mvn-repo/release</url>
+		</repository>
+	</distributionManagement>
+	
+	<dependencies>
+		<dependency>
+		    <groupId>org.codehaus.izpack</groupId>
+		    <artifactId>izpack-panel</artifactId>
+		    <version>5.1.1</version>
+		</dependency>
+	</dependencies>
+</project>
