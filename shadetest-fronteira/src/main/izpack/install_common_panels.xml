@@ -1,0 +1,8 @@
+<panels>
+	<panel classname="HelloPanel" />
+	<panel classname="ProcessPanel" displayHidden="true" />
+	<panel classname="TargetPanel" />
+	<panel classname="InstallPanel" />
+	<panel classname="ShortcutPanel" />
+	<panel classname="SimpleFinishPanel" />
+</panels>

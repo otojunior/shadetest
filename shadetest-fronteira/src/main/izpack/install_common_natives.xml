@@ -1,0 +1,21 @@
+<!-- 
+	Trecho para criação de entradas no Registro do Windows.
+	Funcionalidade de Instalação/Desinstalação do aplicativo
+	via Adicionar/Remover Programas do Painel de Controle (Windows).
+-->
+
+<natives>
+	<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+       <os family="windows"/>
+    </native>
+    <native type="3rdparty" name="COIOSHelper_x64.dll" stage="both">
+       <os family="windows"/>
+    </native>
+    
+    <!--
+    	Elementos utilizados para criação de ícones na Área de Trabalho
+    	e Menu Iniciar do Windows.
+    -->
+    <native type="izpack" name="ShellLink.dll"/>
+    <native type="izpack" name="ShellLink_x64.dll"/>
+</natives>

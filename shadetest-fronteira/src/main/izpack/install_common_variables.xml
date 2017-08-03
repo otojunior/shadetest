@@ -1,0 +1,5 @@
+<variables>
+	<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+	<variable name="TargetPanel.dir.windows" value="C:/ShadeTestFolder/@{izpack.info.appsubpath}"/>
+ 	<variable name="TargetPanel.dir.unix" value="/usr/local/shadetestfolder/@{izpack.info.appsubpath}"/>
+</variables>

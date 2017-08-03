@@ -1,0 +1,12 @@
+<info>
+	<appname>@{izpack.info.appname}</appname>
+	<appversion>@{izpack.info.appversion}</appversion>
+	<appsubpath>@{izpack.info.appsubpath}</appsubpath>
+	<authors>
+		<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
+	</authors>
+	<url>@{izpack.info.url}</url>
+	<javaversion>@{izpack.info.javaversion}</javaversion>
+	<requiresjdk>yes</requiresjdk>
+	<singleinstance>yes</singleinstance>
+</info>
