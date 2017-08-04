@@ -37,6 +37,7 @@
 		<pack name="Pack Java Embutido" required="yes" uninstall="false">
 			<description>Java (JRE) embutido para execução da aplicação</description>
 			<file src="@{izpack.jre.bundled.file.linux64}" targetdir="${INSTALL_PATH}" unpack="true" override="true"/>
+			<executable targetfile="${INSTALL_PATH}/jre1.8.0_144/bin/java" keep="true" />
 		</pack>
 	</packs>
 	

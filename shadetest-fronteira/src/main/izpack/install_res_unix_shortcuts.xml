@@ -7,7 +7,7 @@
 	
 	<shortcut 
 		name="ShadeTest Software" 
-		target="${INSTALL_PATH}/jre1.8.0_144/bin/java -jar shadetest.jar"
+		target="${INSTALL_PATH}/jre1.8.0_144/bin/java -jar ${INSTALL_PATH}/shadetest.jar"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"

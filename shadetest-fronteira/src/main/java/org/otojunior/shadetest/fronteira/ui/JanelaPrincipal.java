@@ -7,7 +7,6 @@ import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -60,7 +59,8 @@ public class JanelaPrincipal extends JFrame {
 				"java.version: " + System.getProperty("java.version") + "\n" +
 				"java.home: " + System.getProperty("java.home") + "\n" +
 				"java.vm.name: " + System.getProperty("java.vm.name") + "\n" +
-				"java.class.version: " + System.getProperty("java.class.version");
+				"java.class.version: " + System.getProperty("java.class.version") + "\n" +
+				"user.home: " + System.getProperty("user.home");
 			
 		JTextArea textArea = new JTextArea(str);
 		textArea.setEditable(false);
