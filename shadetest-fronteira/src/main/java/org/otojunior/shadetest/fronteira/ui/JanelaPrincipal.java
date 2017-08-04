@@ -60,7 +60,7 @@ public class JanelaPrincipal extends JFrame {
 				"java.home: " + System.getProperty("java.home") + "\n" +
 				"java.vm.name: " + System.getProperty("java.vm.name") + "\n" +
 				"java.class.version: " + System.getProperty("java.class.version") + "\n" +
-				"user.home: " + System.getProperty("user.home");
+				"user.dir: " + System.getProperty("user.dir");
 			
 		JTextArea textArea = new JTextArea(str);
 		textArea.setEditable(false);
