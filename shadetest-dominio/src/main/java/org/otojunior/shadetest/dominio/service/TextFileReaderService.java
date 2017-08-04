@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author 01456231650
+ * <p>TextFileReaderService class.</p>
  *
+ * @author 01456231650
+ * @version $Id: $Id
  */
 public class TextFileReaderService {
 	/***/
@@ -25,8 +27,9 @@ public class TextFileReaderService {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * <p>read.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String read() {
 		StringBuilder buffer = new StringBuilder();

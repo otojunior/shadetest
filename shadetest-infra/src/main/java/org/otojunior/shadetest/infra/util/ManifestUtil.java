@@ -25,8 +25,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Manifest reader utilitary class.
- * 
+ *
  * @author Oto Junior
+ * @version $Id: $Id
  */
 public class ManifestUtil {
 	/* Logger */
@@ -35,18 +36,31 @@ public class ManifestUtil {
 	private static final String MANIFEST_PATH = "META-INF/MANIFEST.MF";
 	
 	/* Public constants presents in manifest attributes. */
+	/** Constant <code>CREATED_BY="Created-By"</code> */
 	public static final String CREATED_BY 					= "Created-By";
+	/** Constant <code>BUILD_JDK="Build-Jdk"</code> */
 	public static final String BUILD_JDK 					= "Build-Jdk";
+	/** Constant <code>BUILT_BY="Built-By"</code> */
 	public static final String BUILT_BY 					= "Built-By";
+	/** Constant <code>IMPLEMENTATION_BRANCH="Implementation-Branch"</code> */
 	public static final String IMPLEMENTATION_BRANCH 		= "Implementation-Branch";
+	/** Constant <code>IMPLEMENTATION_BUILD="Implementation-Build"</code> */
 	public static final String IMPLEMENTATION_BUILD 		= "Implementation-Build";
+	/** Constant <code>IMPLEMENTATION_DATE="Implementation-Date"</code> */
 	public static final String IMPLEMENTATION_DATE 			= "Implementation-Date";
+	/** Constant <code>IMPLEMENTATION_TITLE="Implementation-Title"</code> */
 	public static final String IMPLEMENTATION_TITLE 		= "Implementation-Title";
+	/** Constant <code>IMPLEMENTATION_VENDOR="Implementation-Vendor"</code> */
 	public static final String IMPLEMENTATION_VENDOR 		= "Implementation-Vendor";
+	/** Constant <code>IMPLEMENTATION_VENDOR_ID="Implementation-Vendor-Id"</code> */
 	public static final String IMPLEMENTATION_VENDOR_ID 	= "Implementation-Vendor-Id";
+	/** Constant <code>IMPLEMENTATION_VERSION="Implementation-Version"</code> */
 	public static final String IMPLEMENTATION_VERSION 		= "Implementation-Version";
+	/** Constant <code>SPECIFICATION_TITLE="Specification-Title"</code> */
 	public static final String SPECIFICATION_TITLE 			= "Specification-Title";
+	/** Constant <code>SPECIFICATION_VENDOR="Specification-Vendor"</code> */
 	public static final String SPECIFICATION_VENDOR 		= "Specification-Vendor";
+	/** Constant <code>SPECIFICATION_VERSION="Specification-Version"</code> */
 	public static final String SPECIFICATION_VERSION 		= "Specification-Version";
 
 	/**
@@ -69,6 +83,7 @@ public class ManifestUtil {
 	
 	/**
 	 * Get the manifest attribute value.
+	 *
 	 * @param name the attribute name specified.
 	 * @return The value of attribute.
 	 */
@@ -82,6 +97,7 @@ public class ManifestUtil {
 	
 	/**
 	 * Get the manifest attribute value.
+	 *
 	 * @param name the attribute name specified.
 	 * @param reload Reloads manifest before get the attribute value.
 	 * @return The value of attribute.

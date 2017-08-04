@@ -17,7 +17,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Janela Principal
+ *
  * @author Oto Junior
+ * @version $Id: $Id
  */
 public class JanelaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +31,7 @@ public class JanelaPrincipal extends JFrame {
 	 * Construtor padrão.
 	 */
 	public JanelaPrincipal() {
-		this.setSize(300, 150);
+		this.setSize(500, 200);
 		this.setLocation(500,  500);
 		this.setResizable(false);
 		this.setTitle("Janela Principal - Teste Shade");

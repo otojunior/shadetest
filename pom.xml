@@ -40,7 +40,7 @@
 		<plugin.version.maven-compiler-plugin>3.1</plugin.version.maven-compiler-plugin>
 		<plugin.version.maven-dependency-plugin>3.0.1</plugin.version.maven-dependency-plugin>
 		<plugin.version.maven-jar-plugin>2.4</plugin.version.maven-jar-plugin>
-		<plugin.version.maven-javadoc-plugin>2.9.1</plugin.version.maven-javadoc-plugin>
+		<plugin.version.maven-javadoc-plugin>2.10.4</plugin.version.maven-javadoc-plugin>
 		<plugin.version.maven-release-plugin>2.5.3</plugin.version.maven-release-plugin>
 		<plugin.version.maven-resources-plugin>3.0.1</plugin.version.maven-resources-plugin>
 		<plugin.version.maven-shade-plugin>2.4.3</plugin.version.maven-shade-plugin>

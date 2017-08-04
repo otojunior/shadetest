@@ -4,12 +4,14 @@
 package org.otojunior.shadetest.dominio.tokeep;
 
 /**
- * @author 01456231650
+ * <p>ClassDominioToKeepOne class.</p>
  *
+ * @author 01456231650
+ * @version $Id: $Id
  */
 public class ClassDominioToKeepOne {
 	/**
-	 * 
+	 * <p>methodToKeep.</p>
 	 */
 	public void methodToKeep() {
 		/*
