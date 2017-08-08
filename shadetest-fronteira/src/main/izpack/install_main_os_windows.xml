@@ -31,9 +31,9 @@
 			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>
 			<file src="imagens/ico/lixeira.ico" targetdir="${INSTALL_PATH}"/>
 		</pack>
-		<pack name="Pack Banco de Dados" required="yes" uninstall="false">
+		<pack name="Pack Banco de Dados" required="yes" uninstall="false" >
 			<description>Banco de dados da aplicação</description>
-			<fileset dir="mysql" targetdir="${INSTALL_PATH}/mysql" />
+			<fileset dir="mysql" targetdir="${INSTALL_PATH}/mysql" override="false"/>
 		</pack>
 		<pack name="Pack Java Embutido" required="yes" uninstall="true">
 			<description>Java (JRE) embutido para execução da aplicação</description>
