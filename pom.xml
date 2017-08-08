@@ -35,7 +35,7 @@
 		<plugin.version.buildnumber-maven-plugin>1.3</plugin.version.buildnumber-maven-plugin>
 		<plugin.version.build-helper-maven-plugin>1.10</plugin.version.build-helper-maven-plugin>
 		<plugin.version.izpack-maven-plugin>5.1.1</plugin.version.izpack-maven-plugin>
-		<plugin.version.launch4j-maven-plugin>1.7.18</plugin.version.launch4j-maven-plugin>
+		<plugin.version.launch4j-maven-plugin>1.7.19</plugin.version.launch4j-maven-plugin>
 		<plugin.version.maven-assembly-plugin>2.6</plugin.version.maven-assembly-plugin>
 		<plugin.version.maven-compiler-plugin>3.1</plugin.version.maven-compiler-plugin>
 		<plugin.version.maven-dependency-plugin>3.0.1</plugin.version.maven-dependency-plugin>

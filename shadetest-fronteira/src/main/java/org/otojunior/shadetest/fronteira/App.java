@@ -37,9 +37,26 @@ public class App {
 			System.exit(1);
 		}
 		
+		/*
+		 * Criar pasta mysql
+		 */
+		criarBanco();
+		
+		
 		new JanelaPrincipal().setVisible(true);
 	}
 	
+	private static void criarBanco() {
+		File data = new File("mysql/data");
+		data.mkdirs();
+		try {
+			File.createTempFile("prefixo", "sufixo", data);
+			File.createTempFile("prefixo", "sufixo", data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
      * Verifica se a aplicação está rodando. 
      * Este método é útil quando há várias versões instaladas

@@ -198,6 +198,9 @@
 					    		<runtimeBits>32</runtimeBits>
 					    		<initialHeapSize>512</initialHeapSize>
 					    		<maxHeapSize>1024</maxHeapSize>
+					    		<opts>
+					    			<opt>-Dfile.encoding=UTF-8</opt>
+					    		</opts>
 					    	</jre>	
 			    		</configuration>
 			    	</execution>
@@ -264,10 +267,6 @@
 									<targetPath>configuracoes</targetPath>
 								</resource>
 								<resource>
-									<directory>${project.basedir}/mysql</directory>
-									<targetPath>mysql</targetPath>
-								</resource>
-								<resource>
 									<directory>${project.basedir}/src/main/izpack</directory>
 									<targetPath></targetPath>
 								</resource>
@@ -304,7 +303,7 @@
 									<version>8u144-windows-i586</version>	
 									<type>tar.gz</type>
 								</artifactItem>
-								<artifactItem>
+								<!-- <artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
 									<version>8u144-linux-i586</version>	
@@ -315,7 +314,7 @@
 									<artifactId>jre</artifactId>
 									<version>8u144-linux-x64</version>	
 									<type>tar.gz</type>
-								</artifactItem>
+								</artifactItem> -->
 							</artifactItems>
 						</configuration>
 					</execution>
@@ -341,7 +340,7 @@
 							<mkdirs>true</mkdirs>
 						</configuration>
 					</execution>
-					<execution>
+					<!-- <execution>
 						<id>id-izpack-linux32</id>
 						<phase>package</phase>
 						<goals>
@@ -368,7 +367,7 @@
 							<finalName>${izpack.installername.linux64}</finalName>
 							<mkdirs>true</mkdirs>
 						</configuration>
-					</execution>
+					</execution> -->
 				</executions>
 			</plugin>
 		</plugins>
