@@ -12,7 +12,7 @@
 	<artifactId>shadetest-fronteira</artifactId>
 	<packaging>jar</packaging>
 
-	<name>ShadeTest :: Versão IzPack</name>
+	<name>ShadeTest Versão Izpack</name>
 
 	<properties>
 		<IA_HOME>C:\\InstallAnywhere2012</IA_HOME>
@@ -343,7 +343,7 @@
 			<plugin>
 			    <groupId>org.codehaus.izpack</groupId>
 			    <artifactId>izpack-maven-plugin</artifactId>
-			    <version>${plugin.version.izpack-maven-plugin}</version>
+			    <version>5.2.0.sped-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<id>id-izpack-windows</id>
