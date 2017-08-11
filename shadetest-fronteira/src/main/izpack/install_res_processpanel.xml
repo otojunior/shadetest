@@ -4,10 +4,8 @@
   xsi:schemaLocation="http://izpack.org/schema/processing http://izpack.org/schema/5.0/izpack-processing-5.0.xsd">
  
 	<job name="setup">
-		<executeclass name="org.otojunior.shadetest.checainstancia.ChecaInstanciaAoInstalar">
-			<arg>dummy</arg>
-		</executeclass>
+		<executeclass name="org.otojunior.shadetest.checainstancia.ChecaInstanciaAoInstalar"/>
 	</job>
-  	<onFail next="false" previous="false"/>
+  	<onFail next="true" previous="true"/>
   	<onSuccess next="true" previous="true"/>
 </izpack:processing>

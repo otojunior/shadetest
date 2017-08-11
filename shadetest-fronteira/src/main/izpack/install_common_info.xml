@@ -6,7 +6,7 @@
 		<author name="Oto Soares Coelho Junior" email="oto.coelho-junior@serpro.gov.br"/>
 	</authors>
 	<url>@{izpack.info.url}</url>
-	<javaversion>@{izpack.info.javaversion}</javaversion>
+	<javaversion>1.6</javaversion>
 	<requiresjdk>no</requiresjdk>
 	<singleinstance>yes</singleinstance>
 </info>

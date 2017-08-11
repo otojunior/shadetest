@@ -40,7 +40,7 @@
 		<dependency>
 		    <groupId>org.codehaus.izpack</groupId>
 		    <artifactId>izpack-panel</artifactId>
-		    <version>5.1.1</version>
+		    <version>5.2.0.sped-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
