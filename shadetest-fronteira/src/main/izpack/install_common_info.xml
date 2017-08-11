@@ -7,6 +7,6 @@
 	</authors>
 	<url>@{izpack.info.url}</url>
 	<javaversion>@{izpack.info.javaversion}</javaversion>
-	<requiresjdk>yes</requiresjdk>
+	<requiresjdk>no</requiresjdk>
 	<singleinstance>yes</singleinstance>
 </info>
