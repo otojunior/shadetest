@@ -34,10 +34,10 @@
 				pelo plugin do Launch4J especificado neste POM.
 			2. 	O arquivo de instação do Linux (32 e 64 bits) possui a extensão .jar e
 				é gerado diretamente pelo plugin do IzPack especificado neste POM. 
-		-->
 		<izpack.installername.windows>ShadeTest-win32</izpack.installername.windows>
 		<izpack.installername.linux32>ShadeTest-linux32</izpack.installername.linux32>
 		<izpack.installername.linux64>ShadeTest-linux64</izpack.installername.linux64>
+		-->
 		
 		<!--  
 			PROPRIEDADES DO JAVA EMBUTIDO
@@ -90,35 +90,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>${plugin.version.maven-shade-plugin}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<minimizeJar>false</minimizeJar>
-					<filters>
-						<filter>
-							<artifact>*:*</artifact>
-							<excludes>
-								<exclude>META-INF/*.SF</exclude>
-								<exclude>META-INF/*.DSA</exclude>
-								<exclude>META-INF/*.RSA</exclude>
-							</excludes>
-						</filter>
-					</filters>
-				</configuration>
-			</plugin>
-			-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -204,25 +175,6 @@
 					    	</jre>	
 			    		</configuration>
 			    	</execution>
-			    	<execution>
-			    		<id>id-launch4j-instalador</id>
-			    		<phase>verify</phase>
-			    		<goals>
-			    			<goal>launch4j</goal>
-			    		</goals>
-			    		<configuration>
-							<headerType>gui</headerType>
-							<jar>${izpack.staging.output}/${project.build.finalName}-setup-windows.jar</jar>
-							<outfile>${izpack.staging.output}/${izpack.installername.windows}.exe</outfile>
-							<icon>${izpack.staging}/imagens/ico/instalador.ico</icon>
-							<singleInstance>
-								<mutexName>mutexteste</mutexName>
-							</singleInstance>
-							<jre>
-								<minVersion>1.8.0</minVersion>
-							</jre>
-					    </configuration>
-			    	</execution>
 			    </executions>
 			</plugin>
 			
@@ -290,17 +242,55 @@
 			    <version>1.8</version>
 			    <executions>
 			    	<execution>
+			    		<id>id-antrun-createmysql</id>
 			    		<phase>package</phase>
 			    		<goals>
 			    			<goal>run</goal>
 			    		</goals>
+			    		<configuration>
+					    	<target>
+								<mkdir dir="${izpack.staging}/mysql"/>    		
+					    	</target>
+			    		</configuration>
+			    	</execution>
+			    	
+			    	<!-- for 7-zip process #2 -->
+			    	<execution>
+			    		<id>id-antrun-lzma-windows</id>
+			    		<phase>verify</phase>
+			    		<goals>
+			    			<goal>run</goal>
+			    		</goals>
+			    		<configuration>
+					    	<target>
+      							<cmp:sevenz 
+      								destfile="${izpack.staging.output}/${project.build.finalName}-setup-windows.7z" 
+      								xmlns:cmp="antlib:org.apache.ant.compress">
+										<fileset dir="${izpack.staging}/jre/windows" />
+										<fileset dir="${izpack.staging.output}" includes="${project.build.finalName}-setup-windows.jar"/>
+								</cmp:sevenz>
+								
+								<concat
+									destfile="${izpack.staging.output}/${project.build.finalName}-windows.exe"
+									binary="yes">
+									<path>
+										<filelist 
+											dir="${basedir}" 
+											files="${izpack.staging}/sfx/windows/7zSD.sfx,${izpack.staging}/sfx/windows/config.txt,${izpack.staging.output}/${project.build.finalName}-setup-windows.7z" />
+									</path>
+								</concat>
+									    		
+					    	</target>
+			    		</configuration>
 			    	</execution>
 			    </executions>
-			    <configuration>
-			    	<target>
-						<mkdir dir="${izpack.staging}/mysql"/>    		
-			    	</target>
-			    </configuration>
+			    <dependencies>
+			    	<dependency>
+				    	<groupId>org.apache.ant</groupId>
+					    <artifactId>ant-compress</artifactId>
+					    <version>1.5</version>
+			    	</dependency>
+			    </dependencies>
 			</plugin>
 			
 			<plugin>
@@ -309,6 +299,7 @@
 				<version>${plugin.version.maven-dependency-plugin}</version>
 				<executions>
 					<execution>
+						<id>id-dependency-copy</id>
 						<phase>package</phase>
 						<goals>
 							<goal>copy</goal>
@@ -322,18 +313,55 @@
 									<version>8u144-windows-i586</version>	
 									<type>tar.gz</type>
 								</artifactItem>
-								<!-- <artifactItem>
+								<!--
+								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
 									<version>8u144-linux-i586</version>	
 									<type>tar.gz</type>
 								</artifactItem>
+								-->
 								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
 									<version>8u144-linux-x64</version>	
 									<type>tar.gz</type>
-								</artifactItem> -->
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+					
+					<!-- for 7-zip process #1 -->
+					<execution>
+						<id>id-dependency-unpack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u144-windows-i586</version>	
+									<type>tar.gz</type>
+									<outputDirectory>${izpack.staging}/jre/windows</outputDirectory>
+								</artifactItem>
+								<!--
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u144-linux-i586</version>	
+									<type>tar.gz</type>
+								</artifactItem>
+								-->
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u144-linux-x64</version>	
+									<type>tar.gz</type>
+									<outputDirectory>${izpack.staging}/jre/linux-x64</outputDirectory>
+								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>
@@ -359,7 +387,8 @@
 							<mkdirs>true</mkdirs>
 						</configuration>
 					</execution>
-					<!-- <execution>
+					<!-- 
+					<execution>
 						<id>id-izpack-linux32</id>
 						<phase>package</phase>
 						<goals>
@@ -373,6 +402,7 @@
 							<mkdirs>true</mkdirs>
 						</configuration>
 					</execution>
+					-->
 					<execution>
 						<id>id-izpack-linux64</id>
 						<phase>package</phase>
@@ -383,10 +413,10 @@
 							<baseDir>${izpack.staging}</baseDir>
 							<installFile>${basedir}/src/main/izpack/install_main_os_linux64.xml</installFile>
 							<outputDirectory>${izpack.staging.output}</outputDirectory>
-							<finalName>${izpack.installername.linux64}</finalName>
+							<finalName>${project.build.finalName}-setup-linux_x64</finalName>
 							<mkdirs>true</mkdirs>
 						</configuration>
-					</execution> -->
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>

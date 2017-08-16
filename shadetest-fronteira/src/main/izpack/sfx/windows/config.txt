@@ -1,0 +1,8 @@
+;!@Install@!UTF-8!
+Title="InstaladorShadeTest"
+ExtractDialogText="Espere por favor..."
+ExtractTitle="Extraindo..."
+OverwriteMode="2"
+ExecuteFile="jre1.8.0_144\\bin\javaw.exe"
+ExecuteParameters="-jar shadetest-setup-windows.jar"
+;!@InstallEnd@!
