@@ -7,7 +7,7 @@
 	
 	<shortcut 
 		name="ShadeTest Software" 
-		target="${INSTALL_PATH}/jre1.8.0_144/bin/java -jar ${INSTALL_PATH}/shadetest.jar"
+		target="${INSTALL_PATH}/jre/bin/java -Xmx1024m -Dfile.encoding=ISO-8859-1 -jar ${INSTALL_PATH}/shadetest.jar"
 		workingDirectory="${INSTALL_PATH}"
 		iconFile="${INSTALL_PATH}/foguete.ico"
 		programGroup="true"
@@ -17,7 +17,7 @@
 		
 	<shortcut 
 		name="Desinstalar ShadeTest" 
-		target="${INSTALL_PATH}/jre1.8.0_144/bin/java -jar ${INSTALL_PATH}/Uninstaller/uninstaller.jar"
+		target="/usr/bin/java -jar ${INSTALL_PATH}/Uninstaller/uninstaller.jar"
 		workingDirectory="${USER_HOME}"
 		iconFile="${INSTALL_PATH}/lixeira.ico" 
 		programGroup="true"

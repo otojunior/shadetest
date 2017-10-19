@@ -39,26 +39,9 @@
 		<izpack.installername.linux32>ShadeTest-linux32</izpack.installername.linux32>
 		<izpack.installername.linux64>ShadeTest-linux64</izpack.installername.linux64>
 		
-		<!--  
-			PROPRIEDADES DO JAVA EMBUTIDO
-			Usado para a trocar a versão da JRE embutida na aplicação.
-			1. 	Os arquivos da JRE foram obtidos diretamente da Oracle e feito o deploy 
-				(GAV) como especificado pelo plugin maven-dependency-plugin:copy descrito 
-				neste POM.
-			2.  Tais propriedades são usadas tanto no elemento <pack> do arquivo de configuração
-				do IzPack (descritor de instalação), como no jre embutido especificado no plugin
-				do Launch4J neste POM.
-			3. 	A propriedade izpack.jre.bundled.folder deve ser especificada EXATAMENTE como
-				o nome da pasta compactada nos arquivos .tar.gz que por sua vez foram usados
-				como insumo de deploy, os arquivos da JRE ORIGINAIS da Oracle.
-			4.	O caminho do atalho no Linux deve ser especificado de forma ABSOLUTA no arquivo
-				de atalhos install_res_unix_shortcuts.xml. Este arquivo NÃO ACEITA variáveis
-				vindas do POM. (Ainda não foi descoberta uma forma de fazer isso). 
-		--> 
-		<izpack.jre.bundled.file.windows>jre-8u144-windows-i586.tar.gz</izpack.jre.bundled.file.windows>
-		<izpack.jre.bundled.file.linux32>jre-8u144-linux-i586.tar.gz</izpack.jre.bundled.file.linux32>
-		<izpack.jre.bundled.file.linux64>jre-8u144-linux-x64.tar.gz</izpack.jre.bundled.file.linux64>
-		<izpack.jre.bundled.folder>jre1.8.0_144</izpack.jre.bundled.folder>
+		<izpack.jre.bundled.file.windows>jre-8u152-windows-i586-sped.tar.gz</izpack.jre.bundled.file.windows>
+		<izpack.jre.bundled.file.linux32>jre-8u152-linux-i586-sped.tar.gz</izpack.jre.bundled.file.linux32>
+		<izpack.jre.bundled.file.linux64>jre-8u152-linux-x64-sped.tar.gz</izpack.jre.bundled.file.linux64>
 	</properties>
 
 	<dependencies>
@@ -90,35 +73,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!--
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>${plugin.version.maven-shade-plugin}</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<minimizeJar>false</minimizeJar>
-					<filters>
-						<filter>
-							<artifact>*:*</artifact>
-							<excludes>
-								<exclude>META-INF/*.SF</exclude>
-								<exclude>META-INF/*.DSA</exclude>
-								<exclude>META-INF/*.RSA</exclude>
-							</excludes>
-						</filter>
-					</filters>
-				</configuration>
-			</plugin>
-			-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -178,6 +132,7 @@
 			    <artifactId>launch4j-maven-plugin</artifactId>
 			    <version>${plugin.version.launch4j-maven-plugin}</version>
 			    <executions>
+			    	<!-- ########## IzPack - Passo 1 (Geração de executável Windows para JAR principal) ########## -->
 			    	<execution>
 			    		<id>id-launch4j-executavel</id>
 			    		<phase>package</phase>
@@ -191,7 +146,7 @@
 					    	<outfile>${project.build.directory}/${project.build.finalName}.exe</outfile>
 					    	<icon>${project.basedir}/src/main/izpack/imagens/ico/foguete.ico</icon>
 					    	<jre>
-					    		<path>${izpack.jre.bundled.folder}</path>
+					    		<path>jre</path>
 					    		<bundledJre64Bit>false</bundledJre64Bit>
 					    		<bundledJreAsFallback>false</bundledJreAsFallback>
 					    		<jdkPreference>jreOnly</jdkPreference>
@@ -204,6 +159,8 @@
 					    	</jre>	
 			    		</configuration>
 			    	</execution>
+			    	
+			    	<!-- ########## IzPack - Passo 7 (Geração de executável Windows para o instalador) ########## -->
 			    	<execution>
 			    		<id>id-launch4j-instalador</id>
 			    		<phase>verify</phase>
@@ -219,13 +176,14 @@
 								<mutexName>mutexteste</mutexName>
 							</singleInstance>
 							<jre>
-								<minVersion>1.8.0</minVersion>
+								<minVersion>1.6.0</minVersion>
 							</jre>
 					    </configuration>
 			    	</execution>
 			    </executions>
 			</plugin>
 			
+			<!-- ########## IzPack - Passo 2 (Criação da pasta do staging e cópia de bibliotecas) ########## -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -245,6 +203,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- ########## IzPack - Passo 3 (Cópia de recursos para pasta do staging) ########## -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -284,6 +243,7 @@
 				</executions>
 			</plugin>
 			
+			<!-- ########## IzPack - Passo 4 (Criação da pasta mysql) ########## -->	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-antrun-plugin</artifactId>
@@ -303,6 +263,7 @@
 			    </configuration>
 			</plugin>
 			
+			<!-- ########## IzPack - Passo 5 (Cópia do Java Embutido para pasta de staging) ########## -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -319,27 +280,28 @@
 								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
-									<version>8u144-windows-i586</version>	
-									<type>tar.gz</type>
-								</artifactItem>
-								<!-- <artifactItem>
-									<groupId>br.gov.serpro.sped</groupId>
-									<artifactId>jre</artifactId>
-									<version>8u144-linux-i586</version>	
+									<version>8u152-windows-i586-sped</version>	
 									<type>tar.gz</type>
 								</artifactItem>
 								<artifactItem>
 									<groupId>br.gov.serpro.sped</groupId>
 									<artifactId>jre</artifactId>
-									<version>8u144-linux-x64</version>	
+									<version>8u152-linux-i586-sped</version>	
 									<type>tar.gz</type>
-								</artifactItem> -->
+								</artifactItem>
+								<artifactItem>
+									<groupId>br.gov.serpro.sped</groupId>
+									<artifactId>jre</artifactId>
+									<version>8u152-linux-x64-sped</version>	
+									<type>tar.gz</type>
+								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			
+			<!-- ########## IzPack - Passo 6 (Execução do IzPack) ########## -->
 			<plugin>
 			    <groupId>org.codehaus.izpack</groupId>
 			    <artifactId>izpack-maven-plugin</artifactId>
@@ -359,7 +321,7 @@
 							<mkdirs>true</mkdirs>
 						</configuration>
 					</execution>
-					<!-- <execution>
+					<execution>
 						<id>id-izpack-linux32</id>
 						<phase>package</phase>
 						<goals>
@@ -386,8 +348,41 @@
 							<finalName>${izpack.installername.linux64}</finalName>
 							<mkdirs>true</mkdirs>
 						</configuration>
-					</execution> -->
+					</execution>
 				</executions>
+			</plugin>
+			
+			<!-- ########## IzPack - Passo 7 (Checksum) ########## -->
+			<plugin>
+				<groupId>net.nicoulaj.maven.plugins</groupId>
+		        <artifactId>checksum-maven-plugin</artifactId>
+		        <version>1.6</version>
+		        <executions>
+		        	<execution>
+		        		<phase>verify</phase>
+		        		<goals>
+		        			<goal>files</goal>
+		        		</goals>
+		        	</execution>
+		        </executions>
+		        <configuration>
+					<fileSets>
+						<fileSet>
+							<directory>${izpack.staging.output}</directory>
+							<includes>
+								<include>${izpack.installername.linux32}.jar</include>
+								<include>${izpack.installername.linux64}.jar</include>
+								<include>${izpack.installername.windows}.exe</include>
+							</includes>
+						</fileSet>
+					</fileSets>
+					<algorithms>
+						<algorithm>SHA-1</algorithm>
+					</algorithms>
+  					<shasumSummary>true</shasumSummary>
+  					<shasumSummaryFile>${izpack.staging.output}/checksums.sha</shasumSummaryFile>
+  					<individualFiles>false</individualFiles>
+		        </configuration>
 			</plugin>
 		</plugins>
 	</build>

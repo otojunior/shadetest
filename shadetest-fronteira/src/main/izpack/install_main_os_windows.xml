@@ -26,10 +26,10 @@
 			<fileset dir="configuracoes" targetdir="${INSTALL_PATH}/configuracoes" override="true" />
 			<fileset dir="recursos" targetdir="${INSTALL_PATH}/recursos" override="true" />
 			<fileset dir="lib" targetdir="${INSTALL_PATH}/lib" override="true" />
-			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}"/>
-			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}"/>
-			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}"/>
-			<file src="imagens/ico/lixeira.ico" targetdir="${INSTALL_PATH}"/>
+			<file src="@{izpack.pack.finalname}.jar" targetdir="${INSTALL_PATH}" override="true"/>
+			<file src="@{izpack.pack.finalname}.exe" targetdir="${INSTALL_PATH}" override="true"/>
+			<file src="imagens/ico/foguete.ico" targetdir="${INSTALL_PATH}" override="true"/>
+			<file src="imagens/ico/lixeira.ico" targetdir="${INSTALL_PATH}" override="true"/>
 		</pack>
 		<pack name="Pack Banco de Dados" required="yes" uninstall="false" >
 			<description>Banco de dados da aplicação</description>
