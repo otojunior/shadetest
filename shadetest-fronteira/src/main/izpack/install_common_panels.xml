@@ -1,5 +1,5 @@
 <panels>
-	<panel classname="HelloPanel" />
+	<panel classname="HTMLHelloPanel" />
 	<panel classname="ProcessPanel" displayHidden="true" />
 	<panel classname="TargetPanel" />
 	<panel classname="InstallPanel" />
